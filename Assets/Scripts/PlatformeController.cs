@@ -24,7 +24,7 @@ public class PlatformeController : MonoBehaviour
     }
     public bool HasEntityOnIt() {  return hasEntityOnIt; }
 
-    private void OnMouseEnter()
+    void OnMouseEnter()
     {
         if (!hasEntityOnIt)
             transform.position = new Vector3(transform.position.x, originalY + hoverHeight, transform.position.z);

@@ -5,26 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-<<<<<<< HEAD
-      ticks: 638369549720152082
-    m_Hash: 105689471
-=======
-      ticks: 638370498224314575
-    m_Hash: 3533491573
->>>>>>> 767eb11a7aa2e84a7966abd06cc4ff906b5294a0
+      ticks: 638372874626844448
+    m_Hash: 487077931
   m_LockFileStatus:
     m_FilePath: C:/Users/jerem/Unity Projects/AMJV/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-<<<<<<< HEAD
-      ticks: 638369549720152082
-    m_Hash: 546165422
-=======
-      ticks: 638370498224363804
-    m_Hash: 3409645404
->>>>>>> 767eb11a7aa2e84a7966abd06cc4ff906b5294a0
+      ticks: 638372874626854446
+    m_Hash: 3034120503
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -37,7 +27,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\aymer\Documents\GitHub\AMJV\Library\PackageCache\com.unity.2d.tilemap@1.0.0
+  resolvedPath: C:\Users\jerem\Unity Projects\AMJV\Library\PackageCache\com.unity.2d.tilemap@1.0.0
   assetPath: Packages/com.unity.2d.tilemap
   name: com.unity.2d.tilemap
   displayName: 2D Tilemap Editor
@@ -110,7 +100,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 3.1.2
   source: 1
-  resolvedPath: C:\Users\aymer\Documents\GitHub\AMJV\Library\PackageCache\com.unity.2d.tilemap.extras@3.1.2
+  resolvedPath: C:\Users\jerem\Unity Projects\AMJV\Library\PackageCache\com.unity.2d.tilemap.extras@3.1.2
   assetPath: Packages/com.unity.2d.tilemap.extras
   name: com.unity.2d.tilemap.extras
   displayName: 2D Tilemap Extras

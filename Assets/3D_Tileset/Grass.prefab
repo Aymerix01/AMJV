@@ -65,8 +65,12 @@ PrefabInstance:
       value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ccd474d607d7c7141b32f92740123f41, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccd474d607d7c7141b32f92740123f41, type: 3}
       propertyPath: m_TagString
-      value: Platforme
+      value: Grass
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -74,18 +78,32 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ccd474d607d7c7141b32f92740123f41, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1418200508657024081}
+      addedObject: {fileID: -8700955913596263482}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ccd474d607d7c7141b32f92740123f41, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -8700955913596263482}
+      addedObject: {fileID: 2231933423544241228}
   m_SourcePrefab: {fileID: 100100000, guid: ccd474d607d7c7141b32f92740123f41, type: 3}
 --- !u!1 &5437532877641630137 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ccd474d607d7c7141b32f92740123f41, type: 3}
   m_PrefabInstance: {fileID: 5166920175548333288}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1418200508657024081
-BoxCollider:
+--- !u!114 &-8700955913596263482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5437532877641630137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9594084cdee8a42886b7941b25495b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverHeight: 0.1
+  hasEntityOnIt: 0
+--- !u!64 &2231933423544241228
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,19 +120,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.016634684, y: 0.016322419, z: 0.00738991}
-  m_Center: {x: 0.00016010972, y: -0.000108163804, z: 0.0035067082}
---- !u!114 &-8700955913596263482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5437532877641630137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c9594084cdee8a42886b7941b25495b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverHeight: 0.1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2124705421725058983, guid: ccd474d607d7c7141b32f92740123f41, type: 3}

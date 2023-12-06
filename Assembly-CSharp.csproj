@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\CameraMouvement.cs" />
     <Compile Include="Assets\Scripts\PlatformeController.cs" />
     <Compile Include="Assets\Dowloads\Polytope Studio\Lowpoly_Characters\Sources\Scripts\PT_Create_Prefab.cs" />
+    <Compile Include="Assets\Scripts\EntityController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
