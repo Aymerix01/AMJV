@@ -1,22 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class GridBehavior : MonoBehaviour
 {
     private int scale = 1;
     private GameObject gridPrefab;
 
-    private int start = 58;
-    private int end = 2;
+    private int start;
+    private int end;
     private List<GameObject> path = new List<GameObject>();
 
     private string nameGameObject;
     [SerializeField] private int pos;
     [SerializeField] private float speed = 1.0f;
     [SerializeField] private float timeWaiting = 10f;
+    [SerializeField] private float rangeToSeePlayer = 10.0f;
 
     private bool waiting = false;
     private int nbrPlatforme;
@@ -29,7 +28,7 @@ public class GridBehavior : MonoBehaviour
     private void Start()
     {
         nameGameObject = transform.gameObject.name+pos;
-        start = 58;
+        start = pos;
         anim = GetComponent<Animator>();
         gridPrefab = GameObject.Find("Grid");
         nbrPlatforme = gridPrefab.transform.GetChild(0).childCount;
@@ -38,12 +37,14 @@ public class GridBehavior : MonoBehaviour
         SetIApos();
         GetPathIA();
         etapeMvmtIA = path.Count - 1;
+        path[etapeMvmtIA].GetComponent<PlatformeController>().hasEntityOnIt = true;
     }
 
     private void Update()
     {
         if (!waiting && isIAarrivedEtape(0))
         {
+            path[etapeMvmtIA].GetComponent<PlatformeController>().isDestinationForEntity = false;
             anim.SetBool("isWalking", false);
             StartCoroutine(Wait());
             GetPathIA();
@@ -51,13 +52,19 @@ public class GridBehavior : MonoBehaviour
         } 
         else if (!waiting && isIAarrivedEtape(etapeMvmtIA))
         {
+            path[etapeMvmtIA].GetComponent<PlatformeController>().hasEntityOnIt = false;
             etapeMvmtIA--;
         } 
         else if (!waiting)
         {
+            path[etapeMvmtIA].GetComponent<PlatformeController>().hasEntityOnIt = true;
             anim.SetBool("isWalking", true);
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(path[etapeMvmtIA].transform.position.x, 0.34f + path[etapeMvmtIA].transform.position.y, path[etapeMvmtIA].transform.position.z), speed * Time.deltaTime);
             transform.LookAt(new Vector3(path[etapeMvmtIA].transform.position.x, transform.position.y, path[etapeMvmtIA].transform.position.z));
+        }
+        else
+        {
+            path[etapeMvmtIA].GetComponent<PlatformeController>().hasEntityOnIt = true;
         }
     }
 
@@ -73,6 +80,36 @@ public class GridBehavior : MonoBehaviour
                 gridArray[i].GetComponent<GridStat>().v.Add(nameGameObject, -1);
             }
         }
+    }
+
+    private void SetIApos()
+    {
+        transform.position = new Vector3(gridArray[pos].transform.position.x, 0.34f + gridArray[pos].transform.position.y, gridArray[pos].transform.position.z);
+    }
+
+    private void GetPathIA()
+    {
+        int dest = ChooseDestination();
+
+        if (gridArray[dest] != null)
+        {
+            gridArray[dest].GetComponent<PlatformeController>().isDestinationForEntity = true;
+            start = pos;
+            end = dest;
+            pos = end;
+            SetDistance();
+            SetPath();
+        }
+    }
+
+    private int ChooseDestination()
+    {
+        int dest = Random.Range(0, gridArray.Length - 1);
+        while (gridArray[dest] == null || gridArray[dest].GetComponent<PlatformeController>().hasEntityOnIt || gridArray[dest].GetComponent<PlatformeController>().isDestinationForEntity)
+        {
+            dest = Random.Range(0, gridArray.Length - 1);
+        }
+        return dest;
     }
 
     private void SetDistance()
@@ -104,12 +141,12 @@ public class GridBehavior : MonoBehaviour
 
     private void TestDirection(GameObject platforme, int step)
     {
-        foreach(GameObject platformeVoisine in platforme.GetComponent<GridStat>().voisins)
+        foreach (GameObject platformeVoisine in platforme.GetComponent<GridStat>().voisins)
         {
             if (platformeVoisine && platformeVoisine.GetComponent<GridStat>().v[nameGameObject] == -1)
             {
                 SetVisited(platformeVoisine, step);
-            } 
+            }
         }
     }
 
@@ -174,29 +211,6 @@ public class GridBehavior : MonoBehaviour
         waiting = true;
         yield return new WaitForSeconds(timeWaiting);
         waiting = false;
-    }
-
-    private void SetIApos()
-    {
-        transform.position = new Vector3(gridArray[pos].transform.position.x, 0.34f + gridArray[pos].transform.position.y, gridArray[pos].transform.position.z);
-    }
-
-    private void GetPathIA()
-    {
-        int dest = Random.Range(0, gridArray.Length - 1);
-        while (gridArray[dest] == null)
-        {
-            dest = Random.Range(0, gridArray.Length - 1);
-        }
-
-        if (gridArray[dest] != null)
-        {
-            start = pos;
-            end = dest;
-
-            SetDistance();
-            SetPath();
-        }
     }
 
     private bool isIAarrivedEtape(int etape)

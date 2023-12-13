@@ -14,6 +14,11 @@ public class GridStat : MonoBehaviour
 
     private void Awake()
     {
+        GetPlatformVoisins();
+    }
+
+    private void GetPlatformVoisins()
+    {
         v = new Dictionary<string, int>();
         voisins = new GameObject[6];
         radiusToFindVoisins = 0.866f;
@@ -32,6 +37,5 @@ public class GridStat : MonoBehaviour
                 i++;
             }
         }
-        
     }
 }
