@@ -4,34 +4,26 @@ using UnityEngine;
 
 public class PlatformeController : MonoBehaviour
 {
-    [SerializeField]
-    private float hoverHeight = 0.1f;
+    [SerializeField] private float hoverHeight = 0.1f;
 
-    private float originalY;
+    private float originalYofPlatform;
 
-    [SerializeField]
-    private bool hasEntityOnIt = false;
+    [HideInInspector] public bool hasEntityOnIt = false;
+    [HideInInspector] public bool isDestinationForEntity = false;
     
     private void Start()
     {
-        originalY = 0f;
+        originalYofPlatform = 0f;
     }
 
-    public void EntityOnIt(bool entityOnIt)
-    {
-        hasEntityOnIt = entityOnIt;
-        transform.position = new Vector3(transform.position.x, originalY, transform.position.z);
-    }
-    public bool HasEntityOnIt() {  return hasEntityOnIt; }
-
-    void OnMouseEnter()
+    private void OnMouseEnter()
     {
         if (!hasEntityOnIt)
-            transform.position = new Vector3(transform.position.x, originalY + hoverHeight, transform.position.z);
+            transform.position = new Vector3(transform.position.x, originalYofPlatform + hoverHeight, transform.position.z);
     }
 
     private void OnMouseExit()
     {
-        transform.position = new Vector3(transform.position.x, originalY, transform.position.z);
+        transform.position = new Vector3(transform.position.x, originalYofPlatform, transform.position.z);
     }
 }
