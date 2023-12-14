@@ -360,6 +360,8 @@
 "Assets/Scripts/EntityController.cs"
 "Assets/Scripts/PlatformeController.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/Units/RobertThePeasant.cs"
+"Assets/Scripts/Units/Unit.cs"
 -langversion:9.0
 
 /deterministic
