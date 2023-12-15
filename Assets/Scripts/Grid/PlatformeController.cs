@@ -8,7 +8,7 @@ public class PlatformeController : MonoBehaviour
 
     private float originalYofPlatform;
 
-    [HideInInspector] public bool hasEntityOnIt = false;
+    /*[HideInInspector]*/ public bool hasEntityOnIt = false;
     [HideInInspector] public bool isDestinationForEntity = false;
     
     private void Start()
