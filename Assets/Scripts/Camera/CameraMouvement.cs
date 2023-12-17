@@ -13,7 +13,7 @@ public class CameraMouvement : MonoBehaviour
 
     private Vector3 zoomDir = new Vector3(0, -Mathf.Sin(Mathf.Deg2Rad*20), Mathf.Cos(Mathf.Deg2Rad * 20));
 
-    void Update()
+    void FixedUpdate()
     {
         float horizontalMovement = Input.GetAxis("Horizontal");
         float verticalMovement = Input.GetAxis("Vertical");
@@ -21,7 +21,7 @@ public class CameraMouvement : MonoBehaviour
         Vector3 moveDirection = new Vector3(horizontalMovement, 0f, verticalMovement).normalized;
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.Self);
 
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(Vector3.up, -rotationSpeed * Time.deltaTime, Space.World);
         }
