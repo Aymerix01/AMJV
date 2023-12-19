@@ -28,7 +28,7 @@ class Follow : CharacterState
             return voisinsIndex[randomVoisin];
         } else
         {
-            return 0; //A modifier;
+            return ChooseDestinationRandom();
         }
     }
     public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, GameObject[] g)
@@ -58,11 +58,6 @@ class Follow : CharacterState
             transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
             if (playerPosInit != playerTarget.GetComponent<CharacterStateController>().positionOfCharacter)
             {
-                foreach (GameObject p in path)
-                {
-                    p.GetComponent<GridStat>().isDestinationForEntity = false;
-                    p.GetComponent<GridStat>().hasEntityOnIt = false;
-                }
                 return Exit(new Follow());
             }
             return this;

@@ -7,18 +7,6 @@ class Walk : CharacterState
 
     private int etapeMvmtIA;
 
-    private int ChooseDestinationRandom()
-    {
-        int dest = Random.Range(0, gridArray.Length - 1);
-        while (gridArray[dest] == null || gridArray[dest].GetComponent<GridStat>().hasEntityOnIt || 
-            gridArray[dest].GetComponent<GridStat>().isDestinationForEntity ||
-            dest == positionOfCharacter)
-        {
-            dest = Random.Range(0, gridArray.Length - 1);
-        }
-        return dest;
-    }
-
     private int ChooseDestinationClick()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
