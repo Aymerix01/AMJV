@@ -6,6 +6,7 @@ class Walk : CharacterState
     private GameObject[] path;
 
     private int etapeMvmtIA;
+    private List<GameObject> unitsSelected;
 
     private int ChooseDestinationRandom()
     {
@@ -19,7 +20,7 @@ class Walk : CharacterState
         return dest;
     }
 
-    private int ChooseDestinationClick()
+    private int ChooseDestinationClickSingle()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -37,17 +38,62 @@ class Walk : CharacterState
         }
         return 0;
     }
+
+    private int ChooseDestinationClickMultiple()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            int layer = hit.collider.gameObject.layer;
+            //layer 6 == platform
+            if (layer == 6)
+            {
+                GameObject tile = hit.collider.gameObject;
+                GameObject[] voisins = tile.GetComponent<GridStat>().voisins;
+
+                foreach (GameObject unit in unitsSelected) 
+                {
+                    int i = unitsSelected.IndexOf(transform.gameObject);
+                    Debug.Log(i);
+                    if (i == 0)
+                    {
+                        return tile.GetComponent<GridStat>().posInGridArray;
+                    }
+                   /* else if (!voisins[i-1].GetComponent<GridStat>().hasEntityOnIt)
+                    {
+                        Debug.Log(voisins[i-1].GetComponent<GridStat>().posInGridArray);
+                        return voisins[i-1].GetComponent<GridStat>().posInGridArray;
+                    }*/
+                }
+          
+            }
+        }
+        return 0;
+    }
+
     public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, GameObject[] g)
     {
 
         base.Enter(characterT, posCharacter, s, t, r, g);
-        int end;
-        if(transform.gameObject.layer == 7)
+        unitsSelected = GameObject.FindWithTag("Game Manager").GetComponentInChildren<UnitSelections>().unitsSelected;
+        Debug.Log(unitsSelected.Count);
+        int end = 0 ;
+        
+        if(transform.gameObject.layer == 7 && unitsSelected.Count == 1)
         {
-            end = ChooseDestinationClick();
+            Debug.Log("Single");
+            end = ChooseDestinationClickSingle();
+        }
+        else if (transform.gameObject.layer == 7 && unitsSelected.Count > 1) //&& unitsSelected.Count < 7)
+        {
+            Debug.Log("Multiple");
+            end = ChooseDestinationClickMultiple();
         }
         else
         {
+            Debug.Log("Random");
             end = ChooseDestinationRandom();
         }
         path = FindPath.GetPathIA(transform, positionOfCharacter, end, gridArray);
