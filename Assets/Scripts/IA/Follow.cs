@@ -35,12 +35,13 @@ class Follow : CharacterState
              0 = playerTarget.GetComponent<CharacterStateController>().positionOfCharacter 
              mais dépend du script du joueur donc je ne peux pas encore le faire !
              */
-            if (!voisin.GetComponent<PlatformeController>().hasEntityOnIt)
+            if (!voisin.GetComponent<PlatformeController>().hasEntityOnIt && !voisin.GetComponent<PlatformeController>().isDestinationForEntity)
             {
                 voisinsIndex.Add(voisin.GetComponent<GridStat>().posInGridArray);
             }
         }
         randomVoisin = Random.Range(0, voisinsIndex.Count-1);
+        Debug.Log(randomVoisin);
         return voisinsIndex[randomVoisin];
     }
     public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, GameObject[] g)
