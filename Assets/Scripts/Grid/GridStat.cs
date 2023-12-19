@@ -12,6 +12,9 @@ public class GridStat : MonoBehaviour
 
     private float radiusToFindVoisins;
 
+    /*[HideInInspector]*/ public bool hasEntityOnIt = false;
+    /*[HideInInspector]*/ public bool isDestinationForEntity = false;
+
     private void Awake()
     {
         GetPlatformVoisins();

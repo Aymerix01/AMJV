@@ -12,7 +12,7 @@ class FindPath
 
         if (gridArray[endOfTheTravel] != null)
         {
-            gridArray[endOfTheTravel].GetComponent<PlatformeController>().isDestinationForEntity = true;
+            gridArray[endOfTheTravel].GetComponent<GridStat>().isDestinationForEntity = true;
             SetDistance(nameGameObject, startOfTheTravel, gridArray);
             SetPath(nameGameObject, startOfTheTravel, endOfTheTravel, gridArray, path);
         }

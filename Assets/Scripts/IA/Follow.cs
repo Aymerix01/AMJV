@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
-using Unity.VisualScripting;
 using UnityEngine;
 
 class Follow : CharacterState
@@ -10,48 +8,39 @@ class Follow : CharacterState
     private GameObject[] path;
 
     private int etapeMvmtIA;
-    private GameObject GetPlayerTransform()
-    {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        float closestPlayer = rangeToSeePlayer;
-        GameObject target = null;
-        foreach (GameObject player in players)
-        {
-            if (Vector3.Distance(player.transform.position, transform.position) < closestPlayer)
-            {
-                closestPlayer = Vector3.Distance(player.transform.position, transform.position);
-                target = player;
-            }
-        }
-        return target;
-    }
+    private int playerPosInit;
+
     private int SetDestinationToFollowPlayer()
     {
         List<int> voisinsIndex = new List<int>();
         int randomVoisin;
-        foreach (GameObject voisin in gridArray[0].GetComponent<GridStat>().voisins)
+        foreach (GameObject voisin in gridArray[playerTarget.GetComponent<CharacterStateController>().positionOfCharacter].GetComponent<GridStat>().voisins)
         {
-            /*
-             0 = playerTarget.GetComponent<CharacterStateController>().positionOfCharacter 
-             mais dépend du script du joueur donc je ne peux pas encore le faire !
-             */
-            if (!voisin.GetComponent<PlatformeController>().hasEntityOnIt && !voisin.GetComponent<PlatformeController>().isDestinationForEntity)
+            // 0 = playerTarget.GetComponent<CharacterStateController>().positionOfCharacter
+            if (voisin != null && !voisin.GetComponent<GridStat>().hasEntityOnIt && !voisin.GetComponent<GridStat>().isDestinationForEntity)
             {
                 voisinsIndex.Add(voisin.GetComponent<GridStat>().posInGridArray);
             }
         }
-        randomVoisin = Random.Range(0, voisinsIndex.Count-1);
-        Debug.Log(randomVoisin);
-        return voisinsIndex[randomVoisin];
+        if (voisinsIndex.Count > 0)
+        {
+            randomVoisin = Random.Range(0, voisinsIndex.Count - 1);
+            return voisinsIndex[randomVoisin];
+        } else
+        {
+            return 0; //A modifier;
+        }
     }
     public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, GameObject[] g)
     {
         base.Enter(characterT, posCharacter, s, t, r, g);
         playerTarget = GetPlayerTransform();
-        if (playerTarget == null )
+        if (playerTarget == null)
         {
+            Debug.Log("PlayerTarget is Null");
             return Exit(new Idle());
         }
+        playerPosInit = playerTarget.GetComponent<CharacterStateController>().positionOfCharacter;
         int destination = SetDestinationToFollowPlayer();
         path = FindPath.GetPathIA(transform, positionOfCharacter, destination, gridArray);
         etapeMvmtIA = path.Length - 1;
@@ -63,21 +52,32 @@ class Follow : CharacterState
         base.UpdateState();
         if (IsIAarrivedEtape(0, path))
         {
-            path[etapeMvmtIA].GetComponent<PlatformeController>().isDestinationForEntity = false;
+            path[etapeMvmtIA].GetComponent<GridStat>().isDestinationForEntity = false;
+            gridArray[positionOfCharacter].GetComponent<GridStat>().hasEntityOnIt = true;
             positionOfCharacter = path[0].GetComponent<GridStat>().posInGridArray;
             transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
-            return Exit(new Attack());
+            if (playerPosInit != playerTarget.GetComponent<CharacterStateController>().positionOfCharacter)
+            {
+                foreach (GameObject p in path)
+                {
+                    p.GetComponent<GridStat>().isDestinationForEntity = false;
+                    p.GetComponent<GridStat>().hasEntityOnIt = false;
+                }
+                return Exit(new Follow());
+            }
+            return this;
+           // return Exit(new Attack());
         }
         else if (IsIAarrivedEtape(etapeMvmtIA, path))
         {
-            path[etapeMvmtIA].GetComponent<PlatformeController>().hasEntityOnIt = false;
-            positionOfCharacter = path[etapeMvmtIA].GetComponent<GridStat>().posInGridArray;
+            path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = false;
             etapeMvmtIA--;
+            positionOfCharacter = path[etapeMvmtIA].GetComponent<GridStat>().posInGridArray;
             return this;
         }
         else
         {
-            path[etapeMvmtIA].GetComponent<PlatformeController>().hasEntityOnIt = true;
+            path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = true;
             transform.gameObject.GetComponent<Animator>().SetBool("isWalking", true);
             transform.position = Vector3.MoveTowards(transform.position,
                                             new Vector3(path[etapeMvmtIA].transform.position.x,

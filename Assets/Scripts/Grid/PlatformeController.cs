@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class PlatformeController : MonoBehaviour
 {
-    [SerializeField] private float hoverHeight = 0.1f;
+    /*[SerializeField] private float hoverHeight = 0.1f;
 
     private float originalYofPlatform;
 
-    /*[HideInInspector]*/ public bool hasEntityOnIt = false;
+    *//*[HideInInspector]*//* public bool hasEntityOnIt = false;
     [HideInInspector] public bool isDestinationForEntity = false;
     
     private void Start()
     {
         originalYofPlatform = 0f;
     }
-/*
+*//*
     private void OnMouseEnter()
     {
         if (!hasEntityOnIt)

@@ -25,13 +25,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && positionInGrid != null)
         {
             destinationInGrid = getTilePosition();
-            Debug.Log("Destination : " + destinationInGrid);
         }
 
         if (Input.GetMouseButtonDown(0) && positionInGrid == null) 
         {
             positionInGrid = getTilePosition();
-            Debug.Log("Position : " + positionInGrid);
         }
 
         if (destinationInGrid != null && positionInGrid != null) 

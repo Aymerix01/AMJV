@@ -10,8 +10,8 @@ class Walk : CharacterState
     private int ChooseDestinationRandom()
     {
         int dest = Random.Range(0, gridArray.Length - 1);
-        while (gridArray[dest] == null || gridArray[dest].GetComponent<PlatformeController>().hasEntityOnIt || 
-            gridArray[dest].GetComponent<PlatformeController>().isDestinationForEntity ||
+        while (gridArray[dest] == null || gridArray[dest].GetComponent<GridStat>().hasEntityOnIt || 
+            gridArray[dest].GetComponent<GridStat>().isDestinationForEntity ||
             dest == positionOfCharacter)
         {
             dest = Random.Range(0, gridArray.Length - 1);
@@ -41,7 +41,7 @@ class Walk : CharacterState
     {
 
         base.Enter(characterT, posCharacter, s, t, r, g);
-        int end = 0 ;
+        int end;
         if(transform.gameObject.layer == 7)
         {
             end = ChooseDestinationClick();
@@ -62,28 +62,28 @@ class Walk : CharacterState
         {
             foreach(GameObject p in path)
             {
-                p.GetComponent<PlatformeController>().isDestinationForEntity = false;
-                p.GetComponent<PlatformeController>().hasEntityOnIt = false;
+                p.GetComponent<GridStat>().isDestinationForEntity = false;
+                p.GetComponent<GridStat>().hasEntityOnIt = false;
             }
             return Exit(new Follow());
         }
         if (IsIAarrivedEtape(0, path))
         {
-            path[etapeMvmtIA].GetComponent<PlatformeController>().isDestinationForEntity = false;
+            path[etapeMvmtIA].GetComponent<GridStat>().isDestinationForEntity = false;
             positionOfCharacter = path[0].GetComponent<GridStat>().posInGridArray;
             transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
             return Exit(new Idle());
         }
         else if (IsIAarrivedEtape(etapeMvmtIA, path))
         {
-            path[etapeMvmtIA].GetComponent<PlatformeController>().hasEntityOnIt = false;
-            positionOfCharacter = path[etapeMvmtIA].GetComponent<GridStat>().posInGridArray;
+            path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = false;
             etapeMvmtIA--;
+            positionOfCharacter = path[etapeMvmtIA].GetComponent<GridStat>().posInGridArray;
             return this;
         }
         else
         {
-            path[etapeMvmtIA].GetComponent<PlatformeController>().hasEntityOnIt = true;
+            path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = true;
             transform.gameObject.GetComponent<Animator>().SetBool("isWalking", true);
             transform.position = Vector3.MoveTowards(transform.position,
                                             new Vector3(path[etapeMvmtIA].transform.position.x,
