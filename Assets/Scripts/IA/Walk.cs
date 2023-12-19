@@ -7,7 +7,7 @@ class Walk : CharacterState
 
     private int etapeMvmtIA;
 
-    private int ChooseDestination()
+    private int ChooseDestinationRandom()
     {
         int dest = Random.Range(0, gridArray.Length - 1);
         while (gridArray[dest] == null || gridArray[dest].GetComponent<PlatformeController>().hasEntityOnIt || 
@@ -19,10 +19,37 @@ class Walk : CharacterState
         return dest;
     }
 
+    private int ChooseDestinationClick()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            int layer = hit.collider.gameObject.layer;
+            //layer 6 == platform
+            if (layer == 6)
+            {
+                //Obtention de la position sur la tilemap
+                GameObject tile = hit.collider.gameObject;
+                return tile.GetComponent<GridStat>().posInGridArray;
+            }
+        }
+        return 0;
+    }
     public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, GameObject[] g)
     {
+
         base.Enter(characterT, posCharacter, s, t, r, g);
-        int end = ChooseDestination();
+        int end = 0 ;
+        if(transform.gameObject.layer == 7)
+        {
+            end = ChooseDestinationClick();
+        }
+        else
+        {
+            end = ChooseDestinationRandom();
+        }
         path = FindPath.GetPathIA(transform, positionOfCharacter, end, gridArray);
         etapeMvmtIA = path.Length - 1;
         return this;

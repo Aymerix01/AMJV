@@ -15,7 +15,7 @@ public class PlatformeController : MonoBehaviour
     {
         originalYofPlatform = 0f;
     }
-
+/*
     private void OnMouseEnter()
     {
         if (!hasEntityOnIt)
@@ -26,4 +26,5 @@ public class PlatformeController : MonoBehaviour
     {
         transform.position = new Vector3(transform.position.x, originalYofPlatform, transform.position.z);
     }
+*/
 }

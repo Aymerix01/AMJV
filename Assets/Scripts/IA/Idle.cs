@@ -5,6 +5,7 @@ class Idle : CharacterState
 {
     private bool waiting = false;
     private float time;
+    private UnitSelections unitSelections;
     private void Wait()
     {
         waiting = true;
@@ -18,6 +19,7 @@ class Idle : CharacterState
     public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, GameObject[] g)
     {
         base.Enter(characterT, posCharacter, s, t, r, g);
+        unitSelections = GameObject.FindWithTag("Game Manager").GetComponentInChildren<UnitSelections>();
         return this;
     }
 
@@ -25,7 +27,11 @@ class Idle : CharacterState
     {
         base.UpdateState();
         Wait();
-        if (!waiting)
+        if ( transform.gameObject.layer == 7 && unitSelections.unitsSelected.Contains(transform.gameObject))
+        {
+            return Exit(new Selected());
+        }
+        if (!waiting && transform.gameObject.layer != 7)
         {
             return Exit(new Walk());
         }

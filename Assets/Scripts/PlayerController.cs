@@ -15,8 +15,6 @@ public class PlayerController : MonoBehaviour
         positionInGrid = null;
         destinationInGrid = null;
     }
-
-    
     void Update()
     {
         if (Input.GetMouseButton(0))

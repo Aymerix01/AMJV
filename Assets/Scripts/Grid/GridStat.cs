@@ -31,7 +31,7 @@ public class GridStat : MonoBehaviour
         int i = 0;
         foreach (RaycastHit hit in hits)
         {
-            if (hit.transform.position != transform.position && hit.transform.gameObject.name != "Hole")
+            if (hit.transform.position != transform.position && hit.collider.gameObject.layer == 6 && hit.transform.gameObject.name != "Hole")
             {
                 voisins[i] = hit.transform.gameObject;
                 i++;

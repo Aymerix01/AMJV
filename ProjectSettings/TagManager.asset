@@ -9,6 +9,7 @@ TagManager:
   - Grass
   - Sand
   - Hole
+  - Game Manager
   layers:
   - Default
   - TransparentFX
