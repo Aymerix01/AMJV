@@ -20700,6 +20700,8 @@ GameObject:
   - component: {fileID: 1385048399058697542}
   - component: {fileID: 8117658023168024905}
   - component: {fileID: 4086885621953688958}
+  - component: {fileID: -197227937023099373}
+  - component: {fileID: -2380073312875347}
   m_Layer: 0
   m_Name: Necromanser
   m_TagString: Untagged
@@ -20765,7 +20767,42 @@ MonoBehaviour:
   positionOfCharacter: 58
   speed: 0.1
   timeWaiting: 10
-  gridArray: []
+  rangeToSeePlayer: 0
+--- !u!114 &-197227937023099373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8752429611404451357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a119909efe29093419092f1eae24d11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &-2380073312875347
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8752429611404451357}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8761623384652418433
 GameObject:
   m_ObjectHideFlags: 0
