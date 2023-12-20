@@ -30,7 +30,8 @@ class Walk : CharacterState
 
         base.Enter(characterT, posCharacter, s, t, r, g);
         int end;
-        if(transform.gameObject.layer == 7)
+        transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
+        if (transform.gameObject.layer == 7)
         {
             end = ChooseDestinationClick();
         }

@@ -6,6 +6,7 @@ public class CharacterStateController : MonoBehaviour
     private CharacterState currentState;
 
     public int positionOfCharacter;
+    [SerializeField] private float pv;
     [SerializeField] private float speed;
     [SerializeField] private float timeWaiting;
     [SerializeField] private float rangeToSeePlayer;

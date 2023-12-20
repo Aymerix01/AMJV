@@ -1,54 +1,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-class Follow : CharacterState
+class Escape : CharacterState
 {
-    private GameObject playerTarget;
-
     private GameObject[] path;
 
     private int etapeMvmtIA;
-    private int playerPosInit;
 
-    private int SetDestinationToFollowPlayer()
+    private int ChooseDestinationClick()
     {
-        List<int> voisinsIndex = new List<int>();
-        int randomVoisin;
-        foreach (GameObject voisin in gridArray[playerTarget.GetComponent<CharacterStateController>().positionOfCharacter].GetComponent<GridStat>().voisins)
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
         {
-            // 0 = playerTarget.GetComponent<CharacterStateController>().positionOfCharacter
-            if (voisin != null && !voisin.GetComponent<GridStat>().hasEntityOnIt && !voisin.GetComponent<GridStat>().isDestinationForEntity)
+            int layer = hit.collider.gameObject.layer;
+            //layer 6 == platform
+            if (layer == 6)
             {
-                voisinsIndex.Add(voisin.GetComponent<GridStat>().posInGridArray);
+                //Obtention de la position sur la tilemap
+                GameObject tile = hit.collider.gameObject;
+                return tile.GetComponent<GridStat>().posInGridArray;
             }
         }
-        if (voisinsIndex.Count > 0)
-        {
-            randomVoisin = Random.Range(0, voisinsIndex.Count - 1);
-            return voisinsIndex[randomVoisin];
-        } else
-        {
-            return -1;
-        }
+        return 0;
     }
     public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, GameObject[] g)
     {
+
         base.Enter(characterT, posCharacter, s, t, r, g);
-        playerTarget = GetPlayerTransform();
-        if (playerTarget == null)
+        int end;
+        transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
+        if (transform.gameObject.layer == 7)
         {
-            Debug.Log("PlayerTarget is Null");
-            return Exit(new Idle());
+            end = ChooseDestinationClick();
         }
-        playerPosInit = playerTarget.GetComponent<CharacterStateController>().positionOfCharacter;
-        transform.gameObject.GetComponent<Animator>().SetBool("isWalking", true);
-        int destination = SetDestinationToFollowPlayer();
-        if (destination == -1)
+        else
         {
-            Debug.Log("No Destination, escape");
-            return Exit(new Escape());
+            end = ChooseDestinationRandom();
         }
-        path = FindPath.GetPathIA(transform, positionOfCharacter, destination, gridArray);
+        path = FindPath.GetPathIA(transform, positionOfCharacter, end, gridArray);
         etapeMvmtIA = path.Length - 1;
         return this;
     }
@@ -59,14 +50,9 @@ class Follow : CharacterState
         if (IsIAarrivedEtape(0, path))
         {
             path[etapeMvmtIA].GetComponent<GridStat>().isDestinationForEntity = false;
-            gridArray[positionOfCharacter].GetComponent<GridStat>().hasEntityOnIt = true;
             positionOfCharacter = path[0].GetComponent<GridStat>().posInGridArray;
             transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
-            if (playerPosInit != playerTarget.GetComponent<CharacterStateController>().positionOfCharacter)
-            {
-                return Exit(new Follow());
-            }
-           return Exit(new Attack());
+            return Exit(new Idle());
         }
         else if (IsIAarrivedEtape(etapeMvmtIA, path))
         {
@@ -78,6 +64,7 @@ class Follow : CharacterState
         else
         {
             path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = true;
+            transform.gameObject.GetComponent<Animator>().SetBool("isWalking", true);
             transform.position = Vector3.MoveTowards(transform.position,
                                             new Vector3(path[etapeMvmtIA].transform.position.x,
                                             0.34f + path[etapeMvmtIA].transform.position.y,

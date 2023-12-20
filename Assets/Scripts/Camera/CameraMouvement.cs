@@ -13,6 +13,11 @@ public class CameraMouvement : MonoBehaviour
 
     private Vector3 zoomDir = new Vector3(0, -Mathf.Sin(Mathf.Deg2Rad*20), Mathf.Cos(Mathf.Deg2Rad * 20));
 
+    private void Start()
+    {
+        Time.timeScale = 10f;
+    }
+
     void Update()
     {
         float horizontalMovement = Input.GetAxis("Horizontal");
