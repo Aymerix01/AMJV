@@ -28,6 +28,10 @@ class Idle : CharacterState
         base.UpdateState();
         Wait();
         gridArray[positionOfCharacter].GetComponent<GridStat>().hasEntityOnIt = true;
+        if (transform.gameObject.GetComponent<CharacterStateController>().pv <= 0)
+        {
+            return Exit(new Death());
+        }
         if ( transform.gameObject.layer == 7 && unitSelections.unitsSelected.Contains(transform.gameObject))
         {
             return Exit(new Selected());

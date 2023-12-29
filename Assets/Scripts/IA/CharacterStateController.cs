@@ -6,7 +6,7 @@ public class CharacterStateController : MonoBehaviour
     private CharacterState currentState;
 
     public int positionOfCharacter;
-    [SerializeField] private float pv;
+    public float pv;
     [SerializeField] private float speed;
     [SerializeField] private float timeWaiting;
     [SerializeField] private float rangeToSeePlayer;
@@ -30,5 +30,10 @@ public class CharacterStateController : MonoBehaviour
     private void UpdatePositionOfCharacter()
     {
         positionOfCharacter = currentState.positionOfCharacter;
+    }
+
+    public void GetAttacked(float damage)
+    {
+        pv -= damage;
     }
 }

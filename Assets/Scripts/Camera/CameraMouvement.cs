@@ -15,7 +15,7 @@ public class CameraMouvement : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 10f;
+        //Time.timeScale = 10f;
     }
 
     void Update()

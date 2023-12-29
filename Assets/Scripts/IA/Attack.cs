@@ -23,7 +23,13 @@ class Attack : CharacterState
     public override CharacterState UpdateState()
     {
         base.UpdateState();
+        playerTarget.GetComponent<CharacterStateController>().GetAttacked(0.1f);
         gridArray[positionOfCharacter].GetComponent<GridStat>().hasEntityOnIt = true;
+        if (playerTarget.GetComponent<CharacterStateController>().pv <= 0)
+        {
+            transform.gameObject.GetComponent<Animator>().SetBool("isAttacking", false);
+            return Exit(new Idle());
+        }
         if (posPlayer != playerTarget.GetComponent<CharacterStateController>().positionOfCharacter)
         {
             transform.gameObject.GetComponent<Animator>().SetBool("isAttacking", false);
