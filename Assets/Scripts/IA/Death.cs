@@ -7,9 +7,9 @@ class Death : CharacterState
 {
     private bool waiting = false;
     private float time;
-    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, GameObject[] g)
+    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
     {
-        base.Enter(characterT, posCharacter, s, t, r, g);
+        base.Enter(characterT, posCharacter, s, t, r, ra, g);
         transform.gameObject.GetComponent<Animator>().SetBool("isDead", true);
         transform.gameObject.tag = "Untagged";
         gridArray[posCharacter].gameObject.GetComponent<GridStat>().hasEntityOnIt = false;

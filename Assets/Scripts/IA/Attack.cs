@@ -4,9 +4,9 @@ class Attack : CharacterState
 {
     private GameObject playerTarget;
     private int posPlayer;
-    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, GameObject[] g)
+    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
     {
-        base.Enter(characterT, posCharacter, s, t, r, g);
+        base.Enter(characterT, posCharacter, s, t, r, ra, g);
         playerTarget = GetPlayerTransform();
         if (playerTarget == null)
         {
@@ -23,7 +23,6 @@ class Attack : CharacterState
     public override CharacterState UpdateState()
     {
         base.UpdateState();
-        playerTarget.GetComponent<CharacterStateController>().GetAttacked(0.1f);
         gridArray[positionOfCharacter].GetComponent<GridStat>().hasEntityOnIt = true;
         if (playerTarget.GetComponent<CharacterStateController>().pv <= 0)
         {

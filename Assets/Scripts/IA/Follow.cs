@@ -16,7 +16,6 @@ class Follow : CharacterState
         int randomVoisin;
         foreach (GameObject voisin in gridArray[playerTarget.GetComponent<CharacterStateController>().positionOfCharacter].GetComponent<GridStat>().voisins)
         {
-            // 0 = playerTarget.GetComponent<CharacterStateController>().positionOfCharacter
             if (voisin != null && !voisin.GetComponent<GridStat>().hasEntityOnIt && !voisin.GetComponent<GridStat>().isDestinationForEntity)
             {
                 voisinsIndex.Add(voisin.GetComponent<GridStat>().posInGridArray);
@@ -31,9 +30,9 @@ class Follow : CharacterState
             return -1;
         }
     }
-    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, GameObject[] g)
+    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
     {
-        base.Enter(characterT, posCharacter, s, t, r, g);
+        base.Enter(characterT, posCharacter, s, t, r, ra, g);
         playerTarget = GetPlayerTransform();
         if (playerTarget == null)
         {
@@ -73,6 +72,11 @@ class Follow : CharacterState
             path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = false;
             etapeMvmtIA--;
             positionOfCharacter = path[etapeMvmtIA].GetComponent<GridStat>().posInGridArray;
+            if(Vector3.Distance(playerTarget.transform.position, transform.position) < rangeToAttackPlayer)
+            {
+                transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
+                return Exit(new Attack());
+            }
             return this;
         }
         else

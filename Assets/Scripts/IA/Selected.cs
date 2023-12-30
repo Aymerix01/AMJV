@@ -6,9 +6,9 @@ using UnityEngine;
 public class Selected : CharacterState
 {
     private UnitSelections unitSelections;
-    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, GameObject[] g)
+    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
     {
-        base.Enter(characterT, posCharacter, s, t, r, g);
+        base.Enter(characterT, posCharacter, s, t, r, ra, g);
         unitSelections = GameObject.FindWithTag("Game Manager").GetComponentInChildren<UnitSelections>();
         return this;
     }

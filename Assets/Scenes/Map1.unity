@@ -3253,6 +3253,91 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc63bf80beaa265479bc9e27a87914b3, type: 3}
+--- !u!1001 &978662191
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1353953335464718068, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353953335464718068, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: attackDmg
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353953335464718068, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1583639711869719209, guid: ed968f6271c48e94ebdbba03073e3815, type: 3}
+    - target: {fileID: 1353953335464718068, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: rangeToSeePlayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353953335464718068, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: positionOfCharacter
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353953335464718068, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: rangeToAttackPlayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3997776286613232061, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: m_Name
+      value: SkeletonRange (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3997776286613232061, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337288552527135495, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.427
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337288552527135495, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3577164
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337288552527135495, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.517
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337288552527135495, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337288552527135495, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337288552527135495, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337288552527135495, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337288552527135495, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337288552527135495, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337288552527135495, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e6b3a27f01484bb4c975f4bcf381b42e, type: 3}
 --- !u!1 &995653533
 GameObject:
   m_ObjectHideFlags: 0
@@ -4332,6 +4417,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
+      propertyPath: attackDmg
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
       propertyPath: timeWaiting
       value: 1
       objectReference: {fileID: 0}
@@ -5364,6 +5453,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
       propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
+      propertyPath: attackDmg
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
@@ -7174,6 +7267,10 @@ PrefabInstance:
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4086885621953688958, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
+      propertyPath: attackDmg
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086885621953688958, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1424905881}
@@ -7188,6 +7285,10 @@ PrefabInstance:
     - target: {fileID: 8752429611404451357, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
       propertyPath: m_Name
       value: Necromanser
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752429611404451357, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7207,6 +7308,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
+      propertyPath: attackDmg
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 688324224}
@@ -7218,9 +7323,17 @@ PrefabInstance:
       propertyPath: rangeToSeePlayer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
+      propertyPath: rangeToAttackPlayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3997776286613232061, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
       propertyPath: m_Name
       value: Skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3997776286613232061, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4337288552527135495, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7354,6 +7467,7 @@ SceneRoots:
   - {fileID: 5242380600345670758}
   - {fileID: 1362539753}
   - {fileID: 1745449462}
+  - {fileID: 978662191}
   - {fileID: 5683028415939056685}
   - {fileID: 1214815896}
   - {fileID: 1055973900}

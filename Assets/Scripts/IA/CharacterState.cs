@@ -9,9 +9,10 @@ public abstract class CharacterState
     protected float speed;
     protected float timeWaiting;
     protected float rangeToSeePlayer;
+    protected float rangeToAttackPlayer;
     protected GameObject[] gridArray;
 
-    public virtual CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, GameObject[] g)
+    public virtual CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
     {
         transform = characterT;
         positionOfCharacter = posCharacter;
@@ -19,6 +20,7 @@ public abstract class CharacterState
         timeWaiting = t;
         gridArray = g;
         rangeToSeePlayer = r;
+        rangeToAttackPlayer = ra;
         return this;
     }
     
@@ -28,7 +30,7 @@ public abstract class CharacterState
     }
     public virtual CharacterState Exit(CharacterState newState)
     {
-        newState = newState.Enter(transform, positionOfCharacter, speed, timeWaiting, rangeToSeePlayer, gridArray);
+        newState = newState.Enter(transform, positionOfCharacter, speed, timeWaiting, rangeToSeePlayer, rangeToAttackPlayer, gridArray);
         return newState;
     }
 
@@ -56,7 +58,7 @@ public abstract class CharacterState
             return false;
         }
     }
-    protected GameObject GetPlayerTransform()
+    public GameObject GetPlayerTransform()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         float closestPlayer = rangeToSeePlayer;

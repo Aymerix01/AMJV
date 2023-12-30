@@ -25,10 +25,10 @@ class Walk : CharacterState
         }
         return 0;
     }
-    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, GameObject[] g)
+    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
     {
 
-        base.Enter(characterT, posCharacter, s, t, r, g);
+        base.Enter(characterT, posCharacter, s, t, r, ra, g);
         int end;
         transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
         if (transform.gameObject.layer == 7)

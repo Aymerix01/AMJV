@@ -9,26 +9,30 @@ public class CharacterStateController : MonoBehaviour
     public int positionOfCharacter;
     public float health;
     [SerializeField] private float speed;
+    [SerializeField] private float attackDmg;
     [SerializeField] private float timeWaiting;
     [SerializeField] private float rangeToSeePlayer;
+    [SerializeField] private float rangeToAttackPlayer;
     private GameObject[] gridArray;
 
     [HideInInspector] public float pv;
 
-    public Image healthBar;
+    [SerializeField] private Image healthBar;
+    [SerializeField] private GameObject projectile;
 
     private void Start()
     {
         pv = health;
         gridArray = GridHex.GetGrid(transform);
         currentState = new Idle();
-        currentState = currentState.Enter(transform, positionOfCharacter, speed, timeWaiting, rangeToSeePlayer, gridArray);
+        currentState = currentState.Enter(transform, positionOfCharacter, speed, timeWaiting, rangeToSeePlayer, rangeToAttackPlayer, gridArray);
     }
 
     private void Update()
     {
         currentState = currentState.UpdateState();
         UpdatePositionOfCharacter();
+        healthBar.fillAmount = pv / health;
     }
 
     private void UpdatePositionOfCharacter()
@@ -36,10 +40,21 @@ public class CharacterStateController : MonoBehaviour
         positionOfCharacter = currentState.positionOfCharacter;
     }
 
-    public void GetAttacked(float damage)
+    public void GetAttacked()
     {
-        pv -= damage;
-        if (healthBar != null)
-            healthBar.fillAmount = pv / health;
+        GameObject playerTarget = currentState.GetPlayerTransform();
+        if (rangeToAttackPlayer == 0)
+        {
+            playerTarget.GetComponent<CharacterStateController>().pv -= attackDmg;
+        } else
+        {
+            if (projectile != null)
+            {
+                GameObject p = Instantiate(projectile);
+                p.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
+                p.GetComponent<Projectile>().player = playerTarget.transform;
+                p.GetComponent<Projectile>().attackDmg = attackDmg;
+            }
+        }
     }
 }
