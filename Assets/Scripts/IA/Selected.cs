@@ -16,6 +16,10 @@ public class Selected : CharacterState
     public override CharacterState UpdateState()
     {
         base.UpdateState();
+        if (transform.gameObject.GetComponent<CharacterStateController>().pv <= 0)
+        {
+            return Exit(new Death());
+        }
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
