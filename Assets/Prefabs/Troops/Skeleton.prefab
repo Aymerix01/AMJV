@@ -741,10 +741,13 @@ MonoBehaviour:
   positionOfCharacter: 26
   health: 0
   speed: 1
+  attackDmg: 0
   timeWaiting: 1
-  rangeToSeePlayer: 3
+  rangeToSeeOpponent: 3
+  rangeToAttackPlayer: 0
   pv: 0
   healthBar: {fileID: 3822808923885705795}
+  projectile: {fileID: 0}
 --- !u!136 &4289188008300826475
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ TagManager:
   - Sand
   - Hole
   - Game Manager
+  - Enemy
   layers:
   - Default
   - TransparentFX

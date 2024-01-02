@@ -6037,7 +6037,7 @@ MonoBehaviour:
   speed: 1
   attackDmg: 10
   timeWaiting: 1
-  rangeToSeePlayer: 0
+  rangeToSeeOpponent: 3
   rangeToAttackPlayer: 0
   pv: 0
   healthBar: {fileID: 5269337361423666208}

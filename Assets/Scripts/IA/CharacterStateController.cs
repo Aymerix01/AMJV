@@ -11,7 +11,7 @@ public class CharacterStateController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float attackDmg;
     [SerializeField] private float timeWaiting;
-    [SerializeField] private float rangeToSeePlayer;
+    [SerializeField] private float rangeToSeeOpponent;
     [SerializeField] private float rangeToAttackPlayer;
     private GameObject[] gridArray;
 
@@ -25,7 +25,7 @@ public class CharacterStateController : MonoBehaviour
         pv = health;
         gridArray = GridHex.GetGrid(transform);
         currentState = new Idle();
-        currentState = currentState.Enter(transform, positionOfCharacter, speed, timeWaiting, rangeToSeePlayer, rangeToAttackPlayer, gridArray);
+        currentState = currentState.Enter(transform, positionOfCharacter, speed, timeWaiting, rangeToSeeOpponent, rangeToAttackPlayer, gridArray);
     }
 
     private void Update()

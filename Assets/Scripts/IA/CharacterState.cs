@@ -9,8 +9,11 @@ public abstract class CharacterState
     protected float speed;
     protected float timeWaiting;
     protected float rangeToSeePlayer;
+    protected float rangeToSeeEnemy;
     protected float rangeToAttackPlayer;
     protected GameObject[] gridArray;
+
+    private float rangeToSeeOpponent;
 
     public virtual CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
     {
@@ -19,7 +22,16 @@ public abstract class CharacterState
         speed = s;
         timeWaiting = t;
         gridArray = g;
-        rangeToSeePlayer = r;
+        rangeToSeeOpponent = r;
+        if (transform.gameObject.CompareTag("Player"))
+        {
+            rangeToSeePlayer = 0;
+            rangeToSeeEnemy = r;
+        } else if (transform.gameObject.CompareTag("Enemy"))
+        {
+            rangeToSeePlayer = r;
+            rangeToSeeEnemy = 0;
+        }
         rangeToAttackPlayer = ra;
         return this;
     }
@@ -30,7 +42,7 @@ public abstract class CharacterState
     }
     public virtual CharacterState Exit(CharacterState newState)
     {
-        newState = newState.Enter(transform, positionOfCharacter, speed, timeWaiting, rangeToSeePlayer, rangeToAttackPlayer, gridArray);
+        newState = newState.Enter(transform, positionOfCharacter, speed, timeWaiting, rangeToSeeOpponent, rangeToAttackPlayer, gridArray);
         return newState;
     }
 
@@ -40,6 +52,18 @@ public abstract class CharacterState
         foreach (GameObject player in players)
         {
             if (Vector3.Distance(player.transform.position, transform.position) < rangeToSeePlayer)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    protected bool SeeEnemy()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            if (Vector3.Distance(enemy.transform.position, transform.position) < rangeToSeeEnemy)
             {
                 return true;
             }
@@ -72,6 +96,20 @@ public abstract class CharacterState
             }
         }
         return target;
+    }
+
+    public GameObject[] GetEnemiesGameObject()
+    {
+        GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        List<GameObject> enemiesSeen = new List<GameObject>();
+        foreach (GameObject enemy in Enemies)
+        {
+            if (Vector3.Distance(enemy.transform.position, transform.position) < rangeToSeeEnemy)
+            {
+                enemiesSeen.Add(enemy);
+            }
+        }
+        return enemiesSeen.ToArray();
     }
 
     protected int ChooseDestinationRandom()

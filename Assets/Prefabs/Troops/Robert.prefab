@@ -514,9 +514,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionOfCharacter: 25
+  health: 0
   speed: 0.5
+  attackDmg: 0
   timeWaiting: 0
-  rangeToSeePlayer: 0
+  rangeToSeeOpponent: 3
+  rangeToAttackPlayer: 0
+  pv: 0
+  healthBar: {fileID: 0}
+  projectile: {fileID: 0}
 --- !u!4 &5047444050089355341 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400134, guid: fe7e68b2be2cc23428459b55fee65321, type: 3}

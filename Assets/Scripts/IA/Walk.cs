@@ -124,6 +124,18 @@ class Walk : CharacterState
             }
             return Exit(new Follow());
         }
+        if (SeeEnemy())
+        {
+            GameObject[] enemiesSeen = GetEnemiesGameObject();
+            foreach (GameObject enemy in enemiesSeen)
+            {
+                int childCount = enemy.transform.childCount;
+                for (int i = 1; i < childCount; i++)
+                {
+                    enemy.transform.GetChild(i).gameObject.SetActive(true);
+                }
+            }
+        }
         if (IsIAarrivedEtape(0, path))
         {
             path[etapeMvmtIA].GetComponent<GridStat>().isDestinationForEntity = false;

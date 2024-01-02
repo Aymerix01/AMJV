@@ -48,6 +48,18 @@ class Idle : CharacterState
         {
             return Exit(new Follow());
         }
+        if (SeeEnemy())
+        {
+            GameObject[] enemiesSeen = GetEnemiesGameObject();
+            foreach (GameObject enemy in enemiesSeen)
+            {
+                int childCount = enemy.transform.childCount;
+                for (int i = 1; i < childCount; i++)
+                {
+                    enemy.transform.GetChild(i).gameObject.SetActive(true);
+                }
+            }
+        }
         return this;
     }
 }
