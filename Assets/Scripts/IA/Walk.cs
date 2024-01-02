@@ -33,7 +33,14 @@ class Walk : CharacterState
             {
                 //Obtention de la position sur la tilemap
                 GameObject tile = hit.collider.gameObject;
-                return tile.GetComponent<GridStat>().posInGridArray;
+                if (!tile.gameObject.GetComponent<GridStat>().hasEntityOnIt)
+                {
+                    return tile.GetComponent<GridStat>().posInGridArray;
+                }
+                else
+                {
+                    return positionOfCharacter;
+                }
             }
         }
         return 0;
@@ -56,16 +63,24 @@ class Walk : CharacterState
                 foreach (GameObject unit in unitsSelected) 
                 {
                     int i = unitsSelected.IndexOf(transform.gameObject);
-                    Debug.Log(i);
+                    Debug.Log(i +" "+ unit);
+                    //Debug.Log(voisins.Length);
                     if (i == 0)
                     {
                         return tile.GetComponent<GridStat>().posInGridArray;
                     }
-                   /* else if (!voisins[i-1].GetComponent<GridStat>().hasEntityOnIt)
+                    else if (voisins[i] == null)
                     {
-                        Debug.Log(voisins[i-1].GetComponent<GridStat>().posInGridArray);
-                        return voisins[i-1].GetComponent<GridStat>().posInGridArray;
-                    }*/
+                        return positionOfCharacter;
+                    }
+                    else if (!voisins[i-1].GetComponent<GridStat>().hasEntityOnIt)
+                    {
+                        return voisins[i - 1].GetComponent<GridStat>().posInGridArray;
+                    }
+                    else
+                    {
+                        return positionOfCharacter;
+                    }
                 }
           
             }
@@ -73,27 +88,23 @@ class Walk : CharacterState
         return 0;
     }
 
-    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, GameObject[] g)
+    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
     {
 
-        base.Enter(characterT, posCharacter, s, t, r, g);
+        base.Enter(characterT, posCharacter, s, t, r, ra, g);
         unitsSelected = GameObject.FindWithTag("Game Manager").GetComponentInChildren<UnitSelections>().unitsSelected;
-        Debug.Log(unitsSelected.Count);
         int end = 0 ;
         
         if(transform.gameObject.layer == 7 && unitsSelected.Count == 1)
         {
-            Debug.Log("Single");
             end = ChooseDestinationClickSingle();
         }
         else if (transform.gameObject.layer == 7 && unitsSelected.Count > 1) //&& unitsSelected.Count < 7)
-        {
-            Debug.Log("Multiple");
+        { 
             end = ChooseDestinationClickMultiple();
         }
         else
-        {
-            Debug.Log("Random");
+        { 
             end = ChooseDestinationRandom();
         }
         path = FindPath.GetPathIA(transform, positionOfCharacter, end, gridArray);

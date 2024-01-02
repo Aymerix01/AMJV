@@ -21,7 +21,7 @@ class Idle : CharacterState
     {
 
         base.Enter(characterT, posCharacter, s, t, r, ra, g);
-        unitSelections = GameObject.FindWithTag("Game Manager").GetComponentInChildren<UnitSelections>();
+        unitsSelected = GameObject.FindWithTag("Game Manager").GetComponentInChildren<UnitSelections>().unitsSelected;
         return this;
     }
 
@@ -35,7 +35,7 @@ class Idle : CharacterState
         {
             return Exit(new Death());
         }
-        if ( transform.gameObject.layer == 7 && unitSelections.unitsSelected.Contains(transform.gameObject))
+        if ( transform.gameObject.layer == 7 && unitsSelected.Contains(transform.gameObject))
 
         {
             return Exit(new Selected());

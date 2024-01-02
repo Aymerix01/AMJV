@@ -79,9 +79,9 @@ class FindPath
         }
         else
         {
-            Debug.Log(nameGameObject);
-            Debug.Log(endOfTheTravel);
-            Debug.Log("Can't reach the desired location");
+            //Debug.Log(nameGameObject);
+            //Debug.Log(endOfTheTravel);
+            //Debug.Log("Can't reach the desired location");
             path.Add(gridArray[startOfTheTravel]);
             return path;
         }
