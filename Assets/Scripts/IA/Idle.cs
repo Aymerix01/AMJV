@@ -17,10 +17,11 @@ class Idle : CharacterState
         time += Time.deltaTime;
     }
 
-    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, GameObject[] g)
+    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
     {
-        base.Enter(characterT, posCharacter, s, t, r, g);
-        unitsSelected = GameObject.FindWithTag("Game Manager").GetComponentInChildren<UnitSelections>().unitsSelected;
+
+        base.Enter(characterT, posCharacter, s, t, r, ra, g);
+        unitSelections = GameObject.FindWithTag("Game Manager").GetComponentInChildren<UnitSelections>();
         return this;
     }
 
@@ -29,7 +30,12 @@ class Idle : CharacterState
         base.UpdateState();
         Wait();
         gridArray[positionOfCharacter].GetComponent<GridStat>().hasEntityOnIt = true;
-        if ( transform.gameObject.layer == 7 && unitsSelected.Contains(transform.gameObject))
+
+        if (transform.gameObject.GetComponent<CharacterStateController>().pv <= 0)
+        {
+            return Exit(new Death());
+        }
+        if ( transform.gameObject.layer == 7 && unitSelections.unitsSelected.Contains(transform.gameObject))
 
         {
             return Exit(new Selected());
