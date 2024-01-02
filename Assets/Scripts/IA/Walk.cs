@@ -8,18 +8,6 @@ class Walk : CharacterState
     private int etapeMvmtIA;
     private List<GameObject> unitsSelected;
 
-    private int ChooseDestinationRandom()
-    {
-        int dest = Random.Range(0, gridArray.Length - 1);
-        while (gridArray[dest] == null || gridArray[dest].GetComponent<GridStat>().hasEntityOnIt || 
-            gridArray[dest].GetComponent<GridStat>().isDestinationForEntity ||
-            dest == positionOfCharacter)
-        {
-            dest = Random.Range(0, gridArray.Length - 1);
-        }
-        return dest;
-    }
-
     private int ChooseDestinationClickSingle()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -94,7 +82,6 @@ class Walk : CharacterState
         base.Enter(characterT, posCharacter, s, t, r, ra, g);
         unitsSelected = GameObject.FindWithTag("Game Manager").GetComponentInChildren<UnitSelections>().unitsSelected;
         int end = 0 ;
-        
         if(transform.gameObject.layer == 7 && unitsSelected.Count == 1)
         {
             end = ChooseDestinationClickSingle();
@@ -104,7 +91,7 @@ class Walk : CharacterState
             end = ChooseDestinationClickMultiple();
         }
         else
-        { 
+        {
             end = ChooseDestinationRandom();
         }
         path = FindPath.GetPathIA(transform, positionOfCharacter, end, gridArray);

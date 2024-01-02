@@ -1275,7 +1275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878482941588158867, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2329,7 +2329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4129179797787765539, guid: 63c15647f8b2bbd4984e9ed9762053e6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9061879212019768785, guid: 63c15647f8b2bbd4984e9ed9762053e6, type: 3}
       propertyPath: positionOfCharacter
@@ -2966,6 +2966,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2380782664994930635, guid: 91d8bac801e9403438fef88ba2ba9240, type: 3}
+      propertyPath: plateform.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 3655585540391701500, guid: 91d8bac801e9403438fef88ba2ba9240, type: 3}
       propertyPath: grid
       value: 
@@ -4946,6 +4950,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1836009246148935362, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
+      propertyPath: timeWaiting
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836009246148935362, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
       propertyPath: rangeToSeePlayer
       value: 0
       objectReference: {fileID: 0}
@@ -5468,7 +5476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1210639886435670450, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
       propertyPath: speed
@@ -6554,7 +6562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2560361004283793064, guid: fa4f8bdea9d4d8544a7e0732ab30397f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2937449114501731346, guid: fa4f8bdea9d4d8544a7e0732ab30397f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7452,7 +7460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5122250236991887343, guid: 20ef5ebc2ab2d414e889282bed237dfe, type: 3}
       propertyPath: positionOfCharacter
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5893806968510400591, guid: 20ef5ebc2ab2d414e889282bed237dfe, type: 3}
       propertyPath: m_Name
@@ -7468,7 +7476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6521443821823759093, guid: 20ef5ebc2ab2d414e889282bed237dfe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.881
+      value: 0.892
       objectReference: {fileID: 0}
     - target: {fileID: 6521443821823759093, guid: 20ef5ebc2ab2d414e889282bed237dfe, type: 3}
       propertyPath: m_LocalPosition.y
