@@ -19,6 +19,9 @@ public class CharacterStateController : MonoBehaviour
 
     [SerializeField] private Image healthBar;
     [SerializeField] private GameObject projectile;
+    public Image FlagImg;
+
+    public bool possessFlag;
 
     private void Start()
     {
@@ -26,6 +29,10 @@ public class CharacterStateController : MonoBehaviour
         gridArray = GridHex.GetGrid(transform);
         currentState = new Idle();
         currentState = currentState.Enter(transform, positionOfCharacter, speed, timeWaiting, rangeToSeeOpponent, rangeToAttackPlayer, gridArray);
+        if (!possessFlag)
+        {
+            FlagImg.gameObject.SetActive(false);
+        }
     }
 
     private void Update()

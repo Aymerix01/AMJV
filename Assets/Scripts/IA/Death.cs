@@ -13,6 +13,12 @@ class Death : CharacterState
         transform.gameObject.GetComponent<Animator>().SetBool("isDead", true);
         transform.gameObject.tag = "Untagged";
         gridArray[posCharacter].gameObject.GetComponent<GridStat>().hasEntityOnIt = false;
+        if (characterT.gameObject.GetComponent<CharacterStateController>().possessFlag)
+        {
+            GameObject.Find("Game Manager").GetComponent<FlagSpawner>().SpawnFlag(characterT.gameObject);
+            characterT.gameObject.GetComponent<CharacterStateController>().possessFlag = false;
+            characterT.gameObject.GetComponent<CharacterStateController>().FlagImg.gameObject.SetActive(false);
+        }
         return this;
     }
 
