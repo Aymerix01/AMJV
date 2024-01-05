@@ -20,7 +20,7 @@ class GridHex : CharacterState
         for (int i = 0; i < nbrPlatforme; i++)
         {
             GameObject platform = gridPrefab.transform.GetChild(0).GetChild(i).gameObject;
-            if (platform.name != "Hole")
+            if (platform.tag != "Hole")
             {
                 gridArray[i] = platform;
                 gridArray[i].GetComponent<GridStat>().posInGridArray = i;
