@@ -9,6 +9,7 @@ public class Selected : CharacterState
     public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
     {
         base.Enter(characterT, posCharacter, s, t, r, ra, g);
+        transform.gameObject.GetComponent<CharacterStateController>().selected = true;
         unitsSelected = GameObject.FindWithTag("Game Manager").GetComponentInChildren<UnitSelections>().unitsSelected;
         return this;
     }

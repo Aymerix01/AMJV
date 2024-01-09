@@ -3351,6 +3351,7 @@ GameObject:
   - component: {fileID: 3888853575870152086}
   - component: {fileID: 9061879212019768785}
   - component: {fileID: 3445061190642981700}
+  - component: {fileID: 159714906527990212}
   m_Layer: 7
   m_Name: Assassin
   m_TagString: Player
@@ -3462,9 +3463,11 @@ MonoBehaviour:
   health: 100
   speed: 2
   attackDmg: 50
+  armor: 1
   timeWaiting: 0
   rangeToSeeOpponent: 3
   rangeToAttackPlayer: 0
+  selected: 0
   pv: 0
   healthBar: {fileID: 7548781387292243817}
   projectile: {fileID: 0}
@@ -3482,6 +3485,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a119909efe29093419092f1eae24d11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &159714906527990212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4129179797787765539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6856a7d465cb2a3478a0e6895886cdf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSpeAttack: 20
+  timeEndBoost: 5
+  boost: 100
 --- !u!1 &4208831818851192215
 GameObject:
   m_ObjectHideFlags: 0

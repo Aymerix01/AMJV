@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     [HideInInspector] public Transform player;
     [HideInInspector] public float attackDmg;
+    [HideInInspector] public float armor;
     [SerializeField] private float speedProjectile = 10f;
 
     private void Start()
@@ -25,7 +26,7 @@ public class Projectile : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<CharacterStateController>().pv -= attackDmg;
+            other.gameObject.GetComponent<CharacterStateController>().pv -= attackDmg / armor;
             Destroy(transform.gameObject);
         }
     }

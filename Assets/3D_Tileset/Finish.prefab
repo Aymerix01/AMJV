@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2721595160720907234}
   - component: {fileID: 3146476961220748893}
   - component: {fileID: -3700122744742174910}
+  - component: {fileID: 5821732731414196149}
   m_Layer: 6
   m_Name: Finish
   m_TagString: Grass
@@ -183,5 +184,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9506ef699c0f4a64cb21ef97ead3b9c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5821732731414196149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6901138219282466291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6004bd992f28317488a3ff754985a1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -85,6 +85,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3249c4ccfb1c3404bb8ff9ceb879b4b8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4349229266041527301}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3249c4ccfb1c3404bb8ff9ceb879b4b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3249498494209135939}
   m_SourcePrefab: {fileID: 100100000, guid: 3249c4ccfb1c3404bb8ff9ceb879b4b8, type: 3}
 --- !u!1 &8136962141570840190 stripped
 GameObject:
@@ -103,9 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9594084cdee8a42886b7941b25495b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverHeight: 0.1
-  hasEntityOnIt: 0
-  isDestinationForEntity: 0
 --- !u!64 &-2803510811530138491
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -142,3 +142,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posInGridArray: 0
   voisins: []
+  hasEntityOnIt: 0
+  isDestinationForEntity: 0
+--- !u!114 &3249498494209135939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8136962141570840190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6004bd992f28317488a3ff754985a1af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

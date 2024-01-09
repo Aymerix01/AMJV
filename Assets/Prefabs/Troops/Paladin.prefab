@@ -830,6 +830,7 @@ MonoBehaviour:
   health: 100
   speed: 2
   attackDmg: 0
+  armor: 1
   timeWaiting: 1
   rangeToSeeOpponent: 3
   rangeToAttackPlayer: 0

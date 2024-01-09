@@ -892,6 +892,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 32e8b022da3e1124e89a6a071df4f44f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1210063637301234047}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 32e8b022da3e1124e89a6a071df4f44f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5316703698635227917}
   m_SourcePrefab: {fileID: 100100000, guid: 32e8b022da3e1124e89a6a071df4f44f, type: 3}
 --- !u!1 &2560361004283793064 stripped
 GameObject:
@@ -937,6 +940,7 @@ MonoBehaviour:
   health: 100
   speed: 1
   attackDmg: 1
+  armor: 1
   timeWaiting: 1
   rangeToSeeOpponent: 3
   rangeToAttackPlayer: 0
@@ -957,6 +961,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a119909efe29093419092f1eae24d11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5316703698635227917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2560361004283793064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9537eb0470553d4ba87400aa3cf5d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trap: {fileID: 4493571111389882880, guid: fa153aa7a5120da479f87d48bc0c0a11, type: 3}
+  timeSpawnTrap: 20
 --- !u!4 &2937449114501731346 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 32e8b022da3e1124e89a6a071df4f44f, type: 3}

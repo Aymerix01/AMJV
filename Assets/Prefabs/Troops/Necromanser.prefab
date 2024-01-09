@@ -11581,7 +11581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4027442957197148444
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21115,6 +21115,7 @@ GameObject:
   - component: {fileID: 4086885621953688958}
   - component: {fileID: -197227937023099373}
   - component: {fileID: -2380073312875347}
+  - component: {fileID: 7315802134591897523}
   m_Layer: 0
   m_Name: Necromanser
   m_TagString: Enemy
@@ -21183,6 +21184,7 @@ MonoBehaviour:
   health: 1000
   speed: 1
   attackDmg: 100
+  armor: 0
   timeWaiting: 1
   rangeToSeeOpponent: 3
   rangeToAttackPlayer: 0
@@ -21226,6 +21228,20 @@ CapsuleCollider:
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &7315802134591897523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8752429611404451357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4b4d227ddedfa44920aaf7f559790d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletons: {fileID: 3997776286613232061, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
+  timeSpawnSkeletons: 20
 --- !u!1 &8761623384652418433
 GameObject:
   m_ObjectHideFlags: 0

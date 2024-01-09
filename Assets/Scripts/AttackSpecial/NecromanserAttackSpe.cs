@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Necromanser : MonoBehaviour
+public class NecromanserAttackSpe : MonoBehaviour
 {
     [SerializeField] private GameObject skeletons;
     [SerializeField] private float timeSpawnSkeletons = 20;
