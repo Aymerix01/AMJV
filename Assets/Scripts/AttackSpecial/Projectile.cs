@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [HideInInspector] public Transform player;
+    [HideInInspector] public Transform target;
     [HideInInspector] public float attackDmg;
     [HideInInspector] public float armor;
     [SerializeField] private float speedProjectile = 10f;
@@ -16,15 +16,15 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        if (player != null)
+        if (target != null)
         {
-            transform.Translate((player.position+new Vector3(0, player.localScale.y,0)-transform.position).normalized* speedProjectile*Time.deltaTime, Space.World);
+            transform.Translate((target.position+new Vector3(0, target.localScale.y,0)-transform.position).normalized* speedProjectile*Time.deltaTime, Space.World);
         }
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == target.tag)
         {
             other.gameObject.GetComponent<CharacterStateController>().pv -= attackDmg / armor;
             Destroy(transform.gameObject);

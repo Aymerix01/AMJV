@@ -1,20 +1,25 @@
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 class Follow : CharacterState
 {
-    private GameObject playerTarget;
+    private GameObject characterTarget;
 
     private GameObject[] path;
 
     private int etapeMvmtIA;
-    private int playerPosInit;
+    private int characterPosInit;
 
-    private int SetDestinationToFollowPlayer()
+
+
+    private int SetDestinationToFollowCharacter()
     {
         List<int> voisinsIndex = new List<int>();
         int randomVoisin;
-        foreach (GameObject voisin in gridArray[playerTarget.GetComponent<CharacterStateController>().positionOfCharacter].GetComponent<GridStat>().voisins)
+        foreach (GameObject voisin in gridArray[characterTarget.GetComponent<CharacterStateController>().positionOfCharacter].GetComponent<GridStat>().voisins)
         {
             if (voisin != null && !voisin.GetComponent<GridStat>().hasEntityOnIt && !voisin.GetComponent<GridStat>().isDestinationForEntity)
             {
@@ -33,24 +38,76 @@ class Follow : CharacterState
     public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
     {
         base.Enter(characterT, posCharacter, s, t, r, ra, g);
-        playerTarget = GetPlayerTransform();
-        if (playerTarget == null)
+
+        if (transform.gameObject.tag == "Enemy")
         {
-            Debug.Log("PlayerTarget is Null");
-            return Exit(new Idle());
+            characterTarget = GetPlayerTransform();
+
+            if (characterTarget == null)
+            {
+                Debug.Log("PlayerTarget is Null");
+                return Exit(new Idle());
+            }
+
+            characterPosInit = characterTarget.GetComponent<CharacterStateController>().positionOfCharacter;
+            transform.gameObject.GetComponent<Animator>().SetBool("isWalking", true);
+            int destination = SetDestinationToFollowCharacter();
+
+            if (destination == -1)
+            {
+                Debug.Log("No Destination, escape");
+                return Exit(new Escape());
+            }
+            path = FindPath.GetPathIA(transform, positionOfCharacter, destination, gridArray);
+            etapeMvmtIA = path.Length - 1;
+            return this;
         }
-        playerPosInit = playerTarget.GetComponent<CharacterStateController>().positionOfCharacter;
-        transform.gameObject.GetComponent<Animator>().SetBool("isWalking", true);
-        int destination = SetDestinationToFollowPlayer();
-        if (destination == -1)
+
+        if (transform.gameObject.tag == "Player")
         {
-            Debug.Log("No Destination, escape");
-            return Exit(new Escape());
+            if (transform.gameObject.GetComponent<CharacterStateController>().enemyToAttack == null)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                {
+                    transform.gameObject.GetComponent<CharacterStateController>().enemyToAttack = hit.collider.gameObject;
+                    characterTarget = hit.collider.gameObject;
+                }
+            }
+
+            else
+            {
+                characterTarget = transform.gameObject.GetComponent<CharacterStateController>().enemyToAttack;
+            }
+         
+            if (characterTarget == null)
+            {
+                Debug.Log("PlayerTarget is Null");
+                return Exit(new Idle());
+            }
+
+            if (characterTarget.tag == "Enemy")
+            {
+                characterPosInit = characterTarget.GetComponent<CharacterStateController>().positionOfCharacter;
+                transform.gameObject.GetComponent<Animator>().SetBool("isWalking", true);
+
+                int destination = SetDestinationToFollowCharacter();
+                   
+                if (destination == -1)
+                {
+                    Debug.Log("No Destination, Selected");
+                    return Exit(new Selected());
+                }
+                path = FindPath.GetPathIA(transform, positionOfCharacter, destination, gridArray);
+                etapeMvmtIA = path.Length - 1;
+            }
         }
-        path = FindPath.GetPathIA(transform, positionOfCharacter, destination, gridArray);
-        etapeMvmtIA = path.Length - 1;
         return this;
     }
+       
+  
 
     public override CharacterState UpdateState()
     {
@@ -61,20 +118,23 @@ class Follow : CharacterState
             gridArray[positionOfCharacter].GetComponent<GridStat>().hasEntityOnIt = true;
             positionOfCharacter = path[0].GetComponent<GridStat>().posInGridArray;
             transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
-            if (playerPosInit != playerTarget.GetComponent<CharacterStateController>().positionOfCharacter)
+            if (characterPosInit != characterTarget.GetComponent<CharacterStateController>().positionOfCharacter)
             {
                 return Exit(new Follow());
             }
-           return Exit(new Attack());
+            
+            return Exit(new Attack());   
         }
+
         else if (IsIAarrivedEtape(etapeMvmtIA, path))
         {
             path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = false;
             etapeMvmtIA--;
             positionOfCharacter = path[etapeMvmtIA].GetComponent<GridStat>().posInGridArray;
-            if(Vector3.Distance(playerTarget.transform.position, transform.position) < rangeToAttackPlayer)
+            if(Vector3.Distance(characterTarget.transform.position, transform.position) < rangeToAttackPlayer)
             {
                 transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
+                //Debug.Log("Attacking");
                 return Exit(new Attack());
             }
             return this;

@@ -13,7 +13,7 @@ public class CharacterStateController : MonoBehaviour
     public float armor;
     [SerializeField] private float timeWaiting;
     [SerializeField] private float rangeToSeeOpponent;
-    [SerializeField] private float rangeToAttackPlayer;
+    [SerializeField] private float rangeToAttackOpponent;
     private GameObject[] gridArray;
 
     public bool selected;
@@ -26,13 +26,15 @@ public class CharacterStateController : MonoBehaviour
 
     public bool possessFlag;
 
+    public GameObject enemyToAttack;
+
     private void Start()
     {
         pv = health;
         selected = false;
         gridArray = GridHex.GetGrid(transform);
         currentState = new Idle();
-        currentState = currentState.Enter(transform, positionOfCharacter, speed, timeWaiting, rangeToSeeOpponent, rangeToAttackPlayer, gridArray);
+        currentState = currentState.Enter(transform, positionOfCharacter, speed, timeWaiting, rangeToSeeOpponent, rangeToAttackOpponent, gridArray);
         if (!possessFlag)
         {
             FlagImg.gameObject.SetActive(false);
@@ -53,19 +55,43 @@ public class CharacterStateController : MonoBehaviour
 
     public void GetAttacked()
     {
-        GameObject playerTarget = currentState.GetPlayerTransform();
-        if (rangeToAttackPlayer == 0)
+        if (enemyToAttack == null)
         {
-            playerTarget.GetComponent<CharacterStateController>().pv -= attackDmg / armor;
-        } else
-        {
-            if (projectile != null)
+            GameObject playerTarget = currentState.GetPlayerTransform();
+            if (rangeToAttackOpponent == 0)
             {
-                GameObject p = Instantiate(projectile);
-                p.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
-                p.GetComponent<Projectile>().player = playerTarget.transform;
-                p.GetComponent<Projectile>().attackDmg = attackDmg;
-                p.GetComponent<Projectile>().armor = armor;
+                playerTarget.GetComponent<CharacterStateController>().pv -= attackDmg / armor;
+            }
+            else
+            {
+                if (projectile != null)
+                {
+                    GameObject p = Instantiate(projectile);
+                    p.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
+                    p.GetComponent<Projectile>().target = playerTarget.transform;
+                    p.GetComponent<Projectile>().attackDmg = attackDmg;
+                    p.GetComponent<Projectile>().armor = armor;
+                }
+            }
+        }
+        else
+        {
+            if (rangeToAttackOpponent == 0)
+            {
+                Debug.Log("here no projectile");
+                enemyToAttack.GetComponent<CharacterStateController>().pv -= attackDmg / armor;
+            }
+            else
+            {
+                if (projectile != null)
+                {
+                    Debug.Log("here projectile");
+                    GameObject p = Instantiate(projectile);
+                    p.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
+                    p.GetComponent<Projectile>().target = enemyToAttack.transform;
+                    p.GetComponent<Projectile>().attackDmg = attackDmg;
+                    p.GetComponent<Projectile>().armor = armor;
+                }
             }
         }
     }
