@@ -833,12 +833,14 @@ MonoBehaviour:
   armor: 1
   timeWaiting: 1
   rangeToSeeOpponent: 3
-  rangeToAttackPlayer: 0
+  rangeToAttackOpponent: 1
+  selected: 0
   pv: 100
   healthBar: {fileID: 7980884674061731314}
   projectile: {fileID: 0}
   FlagImg: {fileID: 4472970528431893323}
   possessFlag: 0
+  opponentToAttack: {fileID: 0}
 --- !u!114 &6723507796314834834
 MonoBehaviour:
   m_ObjectHideFlags: 0

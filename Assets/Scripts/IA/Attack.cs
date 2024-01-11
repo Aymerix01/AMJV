@@ -44,6 +44,10 @@ class Attack : CharacterState
     {
         base.UpdateState();
         gridArray[positionOfCharacter].GetComponent<GridStat>().hasEntityOnIt = true;
+        if (transform.gameObject.GetComponent<CharacterStateController>().pv <= 0)
+        {
+            return Exit(new Death());
+        }
         if (characterTarget.GetComponent<CharacterStateController>().pv <= 0)
         {
             transform.gameObject.GetComponent<Animator>().SetBool("isAttacking", false);

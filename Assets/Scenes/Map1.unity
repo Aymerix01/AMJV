@@ -5439,20 +5439,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1836009246148935362, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
-      propertyPath: armor
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3681794394356446254, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
-      propertyPath: m_Height
-      value: 2.1767051
-      objectReference: {fileID: 0}
-    - target: {fileID: 3681794394356446254, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
-      propertyPath: m_Center.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3681794394356446254, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
-      propertyPath: m_Center.y
-      value: 0.9131082
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 7353861448577347655, guid: e805f98e4e9b0644bad5af9bd703a823, type: 3}
+    - target: {fileID: 1836009246148935362, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
+      propertyPath: rangeToAttackOpponent
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8570807793178220894, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7947,6 +7939,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Necromanser
       objectReference: {fileID: 0}
+    - target: {fileID: 8752429611404451357, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7988,6 +7984,10 @@ PrefabInstance:
       propertyPath: rangeToAttackPlayer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
+      propertyPath: rangeToAttackOpponent
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3800647847514094310, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -7995,6 +7995,10 @@ PrefabInstance:
     - target: {fileID: 3997776286613232061, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
       propertyPath: m_Name
       value: Skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3997776286613232061, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3997776286613232061, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
       propertyPath: m_TagString
