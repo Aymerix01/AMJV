@@ -36,7 +36,7 @@ public class PriestSpecial : MonoBehaviour
                 if (obj.CompareTag("Player"))
                 {
                     playerHealed.Add(obj);
-                    obj.GetComponent<CharacterStateController>().health += heal;
+                    obj.GetComponent<CharacterStateController>().pv = Mathf.Min(obj.GetComponent<CharacterStateController>().health, obj.GetComponent<CharacterStateController>().pv + heal);
                 }
             }
         }
