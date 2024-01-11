@@ -24,7 +24,7 @@ class Attack : CharacterState
         }
         else if (transform.gameObject.tag == "Player")
         {
-            characterTarget = transform.gameObject.GetComponent<CharacterStateController>().enemyToAttack;
+            characterTarget = transform.gameObject.GetComponent<CharacterStateController>().opponentToAttack;
             if (characterTarget == null)
             {
                 return Exit(new Idle());

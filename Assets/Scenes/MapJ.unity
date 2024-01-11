@@ -1264,10 +1264,22 @@ PrefabInstance:
     - target: {fileID: 1238588543430844932, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
       propertyPath: projectile
       value: 
-      objectReference: {fileID: 1583639711869719209, guid: ed968f6271c48e94ebdbba03073e3815, type: 3}
+      objectReference: {fileID: 5280402743154612496, guid: bc115da546f60c941af5469287f10d50, type: 3}
     - target: {fileID: 1238588543430844932, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
       propertyPath: rangeToAttackOpponent
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1646037975673111733, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687216889462344102, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322185681207527093, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3025835577291104713, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1309,9 +1321,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3935227598177780832, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399163396246066202, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5625046452141376054, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5712895413224041159, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 60b0eee8a5e6c2240b6ff1aa1f765df0, type: 2}
+    - target: {fileID: 5844628207787880016, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892502957095001190, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7337838257007381588, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657234015874167073, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7878482941588158867, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
       propertyPath: m_Name
       value: FemalePaladin
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033904818167369147, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575785995118133704, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2373,7 +2425,7 @@ PrefabInstance:
     - target: {fileID: 1836009246148935362, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
       propertyPath: projectile
       value: 
-      objectReference: {fileID: 1583639711869719209, guid: ed968f6271c48e94ebdbba03073e3815, type: 3}
+      objectReference: {fileID: 7353861448577347655, guid: e805f98e4e9b0644bad5af9bd703a823, type: 3}
     - target: {fileID: 1836009246148935362, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
       propertyPath: rangeToAttackOpponent
       value: 3

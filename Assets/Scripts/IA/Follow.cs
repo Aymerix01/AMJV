@@ -65,21 +65,21 @@ class Follow : CharacterState
 
         if (transform.gameObject.tag == "Player")
         {
-            if (transform.gameObject.GetComponent<CharacterStateController>().enemyToAttack == null)
+            if (transform.gameObject.GetComponent<CharacterStateController>().opponentToAttack == null)
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    transform.gameObject.GetComponent<CharacterStateController>().enemyToAttack = hit.collider.gameObject;
+                    transform.gameObject.GetComponent<CharacterStateController>().opponentToAttack = hit.collider.gameObject;
                     characterTarget = hit.collider.gameObject;
                 }
             }
 
             else
             {
-                characterTarget = transform.gameObject.GetComponent<CharacterStateController>().enemyToAttack;
+                characterTarget = transform.gameObject.GetComponent<CharacterStateController>().opponentToAttack;
             }
          
             if (characterTarget == null)

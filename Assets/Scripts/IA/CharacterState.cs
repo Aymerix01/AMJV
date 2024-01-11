@@ -13,6 +13,7 @@ public abstract class CharacterState
     protected float rangeToAttackPlayer;
     protected GameObject[] gridArray;
 
+
     private float rangeToSeeOpponent;
 
     public virtual CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)

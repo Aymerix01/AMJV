@@ -26,7 +26,7 @@ public class CharacterStateController : MonoBehaviour
 
     public bool possessFlag;
 
-    public GameObject enemyToAttack;
+    public GameObject opponentToAttack;
 
     private void Start()
     {
@@ -55,7 +55,7 @@ public class CharacterStateController : MonoBehaviour
 
     public void GetAttacked()
     {
-        if (enemyToAttack == null)
+        if (opponentToAttack == null)
         {
             GameObject playerTarget = currentState.GetPlayerTransform();
             if (rangeToAttackOpponent == 0)
@@ -78,17 +78,15 @@ public class CharacterStateController : MonoBehaviour
         {
             if (rangeToAttackOpponent == 0)
             {
-                Debug.Log("here no projectile");
-                enemyToAttack.GetComponent<CharacterStateController>().pv -= attackDmg / armor;
+                opponentToAttack.GetComponent<CharacterStateController>().pv -= attackDmg / armor;
             }
             else
             {
                 if (projectile != null)
                 {
-                    Debug.Log("here projectile");
                     GameObject p = Instantiate(projectile);
                     p.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
-                    p.GetComponent<Projectile>().target = enemyToAttack.transform;
+                    p.GetComponent<Projectile>().target = opponentToAttack.transform;
                     p.GetComponent<Projectile>().attackDmg = attackDmg;
                     p.GetComponent<Projectile>().armor = armor;
                 }
