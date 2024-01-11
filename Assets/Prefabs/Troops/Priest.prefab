@@ -439,15 +439,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0123672a92a736948931321c4d805984, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.008
+      value: 5.2705865
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0123672a92a736948931321c4d805984, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3577168
+      value: 0.35771704
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0123672a92a736948931321c4d805984, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.511
+      value: -0.062
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0123672a92a736948931321c4d805984, type: 3}
       propertyPath: m_LocalRotation.w
@@ -780,6 +780,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0123672a92a736948931321c4d805984, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8683072234564018571}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0123672a92a736948931321c4d805984, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7032557620843088151}
   m_SourcePrefab: {fileID: 100100000, guid: 0123672a92a736948931321c4d805984, type: 3}
 --- !u!4 &8570807793178220894 stripped
 Transform:
@@ -828,12 +831,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionOfCharacter: 0
   health: 100
-  speed: 1
-  attackDmg: 1
+  speed: 2
+  attackDmg: 50
   armor: 1
   timeWaiting: 1
   rangeToSeeOpponent: 3
-  rangeToAttackOpponent: 1
+  rangeToAttackOpponent: 3
   selected: 0
   pv: 0
   healthBar: {fileID: 523284960733061908}
@@ -853,3 +856,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a119909efe29093419092f1eae24d11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7032557620843088151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9059677757247177700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514a7da0d304b2845b4354aff12fe908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSpeAttack: 20
+  radiusSpeAttack: 1
+  heal: 50
