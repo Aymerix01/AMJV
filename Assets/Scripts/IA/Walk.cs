@@ -102,6 +102,10 @@ class Walk : CharacterState
     public override CharacterState UpdateState()
     {
         base.UpdateState();
+        if (transform.gameObject.GetComponent<CharacterStateController>().pv <= 0)
+        {
+            return Exit(new Death());
+        }
         if (SeePlayer())
         {
             foreach(GameObject p in path)
