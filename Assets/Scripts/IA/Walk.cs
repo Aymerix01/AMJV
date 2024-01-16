@@ -115,17 +115,9 @@ class Walk : CharacterState
             }
             return Exit(new Follow());
         }
-        if (SeeEnemy())
+        if (Input.GetMouseButtonDown(1) && unitsSelected.Contains(transform.gameObject))
         {
-            GameObject[] enemiesSeen = GetEnemiesGameObject();
-            foreach (GameObject enemy in enemiesSeen)
-            {
-                int childCount = enemy.transform.childCount;
-                for (int i = 1; i < childCount; i++)
-                {
-                    enemy.transform.GetChild(i).gameObject.SetActive(true);
-                }
-            }
+            return Exit(new Walk());
         }
         if (IsIAarrivedEtape(0, path))
         {

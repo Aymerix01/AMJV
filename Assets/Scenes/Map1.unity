@@ -1377,6 +1377,10 @@ PrefabInstance:
       value: FemalePaladin
       objectReference: {fileID: 0}
     - target: {fileID: 7878482941588158867, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878482941588158867, guid: 62f63a04f1363ae489cf77c98f205487, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -2458,6 +2462,10 @@ PrefabInstance:
     - target: {fileID: 4129179797787765539, guid: 63c15647f8b2bbd4984e9ed9762053e6, type: 3}
       propertyPath: m_Name
       value: Assassin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129179797787765539, guid: 63c15647f8b2bbd4984e9ed9762053e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4583,17 +4591,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7745111708387882097, guid: 9866981c23c1fac4fa4d163917095ee3, type: 3}
   m_PrefabInstance: {fileID: 2017818204}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1227373751 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4036368885097321471, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
-  m_PrefabInstance: {fileID: 5242380600345670758}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1240209261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5490,6 +5487,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Priest
       objectReference: {fileID: 0}
+    - target: {fileID: 9059677757247177700, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5965,6 +5966,10 @@ PrefabInstance:
     - target: {fileID: 1210639886435670450, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
       propertyPath: m_Name
       value: MalePaysan
+      objectReference: {fileID: 0}
+    - target: {fileID: 1210639886435670450, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
       propertyPath: armor
@@ -7063,6 +7068,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FemalePaysan
       objectReference: {fileID: 0}
+    - target: {fileID: 2560361004283793064, guid: fa4f8bdea9d4d8544a7e0732ab30397f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2937449114501731346, guid: fa4f8bdea9d4d8544a7e0732ab30397f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.3356113
@@ -7903,45 +7912,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1588007589512201331, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2107646004296636657, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3218337845182618056, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3847075833355988250, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180218266169852220, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816111540159487188, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6957367130729649333, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7020628853714078478, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8752429611404451357, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
       propertyPath: m_Name
       value: Necromanser
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752429611404451357, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7956,53 +7929,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1039480330440773740, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
-      propertyPath: health
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
-      propertyPath: FlagImg
-      value: 
-      objectReference: {fileID: 1227373751}
-    - target: {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
-      propertyPath: attackDmg
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 1583639711869719209, guid: ed968f6271c48e94ebdbba03073e3815, type: 3}
     - target: {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
       propertyPath: positionOfCharacter
       value: 32
       objectReference: {fileID: 0}
-    - target: {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
-      propertyPath: rangeToAttackPlayer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
-      propertyPath: rangeToAttackOpponent
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800647847514094310, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3997776286613232061, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
       propertyPath: m_Name
       value: Skeleton
-      objectReference: {fileID: 0}
-    - target: {fileID: 3997776286613232061, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3997776286613232061, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4337288552527135495, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8042,10 +7975,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4337288552527135495, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9213832181424482318, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

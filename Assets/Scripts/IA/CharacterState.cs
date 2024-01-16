@@ -60,19 +60,6 @@ public abstract class CharacterState
         }
         return false;
     }
-    protected bool SeeEnemy()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
-        {
-            if (Vector3.Distance(enemy.transform.position, transform.position) < rangeToSeeEnemy)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     protected bool IsIAarrivedEtape(int etape, GameObject[] path)
     {
         if (transform.position == new Vector3(path[etape].transform.position.x, 0.34f + path[etape].transform.position.y, path[etape].transform.position.z))

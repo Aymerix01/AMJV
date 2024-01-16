@@ -21116,6 +21116,7 @@ GameObject:
   - component: {fileID: -197227937023099373}
   - component: {fileID: -2380073312875347}
   - component: {fileID: 7315802134591897523}
+  - component: {fileID: 3127100753156600562}
   m_Layer: 0
   m_Name: Necromanser
   m_TagString: Enemy
@@ -21188,6 +21189,7 @@ MonoBehaviour:
   timeWaiting: 1
   rangeToSeeOpponent: 3
   rangeToAttackOpponent: 1
+  gridArray: []
   selected: 0
   pv: 0
   healthBar: {fileID: 7317027767259965348}
@@ -21245,6 +21247,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skeletons: {fileID: 3997776286613232061, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
   timeSpawnSkeletons: 20
+--- !u!114 &3127100753156600562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8752429611404451357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b73e6a629813b24795f041a212f6082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8761623384652418433
 GameObject:
   m_ObjectHideFlags: 0

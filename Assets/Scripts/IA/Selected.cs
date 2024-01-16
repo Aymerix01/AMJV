@@ -21,18 +21,6 @@ public class Selected : CharacterState
         {
             return Exit(new Death());
         }
-        if (SeeEnemy())
-        {
-            GameObject[] enemiesSeen = GetEnemiesGameObject();
-            foreach (GameObject enemy in enemiesSeen)
-            {
-                int childCount = enemy.transform.childCount;
-                for (int i = 1; i < childCount; i++)
-                {
-                    enemy.transform.GetChild(i).gameObject.SetActive(true);
-                }
-            }
-        }
         if (Input.GetMouseButtonDown(1))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

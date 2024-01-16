@@ -27,9 +27,9 @@ public class BrouillardGuerre : MonoBehaviour
         {
             RaycastHit[] hits;
             hits = Physics.SphereCastAll(transform.position,
-                                   radiusToshow,
-                                   transform.forward,
-                                   radiusToshow);
+                                    radiusToshow,
+                                    transform.forward,
+                                    radiusToshow);
             foreach (RaycastHit hit in hits)
             {
                 if (hit.collider.gameObject.CompareTag("Player"))

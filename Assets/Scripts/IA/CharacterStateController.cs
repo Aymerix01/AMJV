@@ -14,7 +14,7 @@ public class CharacterStateController : MonoBehaviour
     [SerializeField] private float timeWaiting;
     [SerializeField] private float rangeToSeeOpponent;
     [SerializeField] private float rangeToAttackOpponent;
-    private GameObject[] gridArray;
+    [HideInInspector] public GameObject[] gridArray;
 
     public bool selected;
 
