@@ -21195,6 +21195,7 @@ MonoBehaviour:
   FlagImg: {fileID: 1065305757051138901}
   possessFlag: 1
   opponentToAttack: {fileID: 0}
+  rangeOfAction: 20
 --- !u!114 &-197227937023099373
 MonoBehaviour:
   m_ObjectHideFlags: 0

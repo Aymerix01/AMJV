@@ -15,6 +15,7 @@ public abstract class CharacterState
 
 
     private float rangeToSeeOpponent;
+    
 
     public virtual CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
     {
@@ -115,13 +116,30 @@ public abstract class CharacterState
 
     protected int ChooseDestinationRandom()
     {
-        int dest = Random.Range(0, gridArray.Length - 1);
-        while (gridArray[dest] == null || gridArray[dest].GetComponent<GridStat>().hasEntityOnIt ||
-            gridArray[dest].GetComponent<GridStat>().isDestinationForEntity ||
-            dest == positionOfCharacter)
+        int rangeOfAction = transform.gameObject.GetComponent<CharacterStateController>().rangeOfAction;
+        if(rangeOfAction == 0)
         {
-            dest = Random.Range(0, gridArray.Length - 1);
+            int dest = Random.Range(0, gridArray.Length - 1);
+            while (gridArray[dest] == null || gridArray[dest].GetComponent<GridStat>().hasEntityOnIt ||
+                gridArray[dest].GetComponent<GridStat>().isDestinationForEntity ||
+                dest == positionOfCharacter)
+            {
+                dest = Random.Range(0, gridArray.Length - 1);
+            }
+            return dest;
         }
-        return dest;
+        else
+        {
+            int dest = Random.Range(0, rangeOfAction);
+            while (gridArray[dest] == null || gridArray[dest].GetComponent<GridStat>().hasEntityOnIt ||
+                gridArray[dest].GetComponent<GridStat>().isDestinationForEntity ||
+                dest == positionOfCharacter)
+            {
+                dest = Random.Range(0, rangeOfAction);
+            }
+            Debug.Log(dest);
+            return dest;
+        }
+        
     }
 }

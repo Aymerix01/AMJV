@@ -28,6 +28,8 @@ public class CharacterStateController : MonoBehaviour
 
     public GameObject opponentToAttack;
 
+    public int rangeOfAction;
+
     private void Start()
     {
         pv = health;
