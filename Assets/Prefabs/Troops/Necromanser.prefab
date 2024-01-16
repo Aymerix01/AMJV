@@ -21188,7 +21188,7 @@ MonoBehaviour:
   armor: 0
   timeWaiting: 1
   rangeToSeeOpponent: 3
-  rangeToAttackOpponent: 1
+  rangeToAttackOpponent: 1.5
   gridArray: []
   selected: 0
   pv: 0

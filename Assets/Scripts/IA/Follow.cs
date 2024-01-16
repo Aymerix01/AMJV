@@ -65,28 +65,26 @@ class Follow : CharacterState
 
         if (transform.gameObject.tag == "Player")
         {
-            if (transform.gameObject.GetComponent<CharacterStateController>().opponentToAttack == null)
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
+            
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.gameObject.CompareTag("Enemy"))
                 {
                     transform.gameObject.GetComponent<CharacterStateController>().opponentToAttack = hit.collider.gameObject;
                     characterTarget = hit.collider.gameObject;
                 }
             }
-
-            else
-            {
-                characterTarget = transform.gameObject.GetComponent<CharacterStateController>().opponentToAttack;
-            }
+            
          
             if (characterTarget == null)
             {
                 Debug.Log("PlayerTarget is Null");
                 return Exit(new Idle());
             }
+            Debug.Log(characterTarget.name);
 
             if (characterTarget.tag == "Enemy")
             {
@@ -94,7 +92,6 @@ class Follow : CharacterState
                 transform.gameObject.GetComponent<Animator>().SetBool("isWalking", true);
 
                 int destination = SetDestinationToFollowCharacter();
-                   
                 if (destination == -1)
                 {
                     Debug.Log("No Destination, Selected");
@@ -103,6 +100,7 @@ class Follow : CharacterState
                 path = FindPath.GetPathIA(transform, positionOfCharacter, destination, gridArray);
                 etapeMvmtIA = path.Length - 1;
             }
+            return this;
         }
         return this;
     }
@@ -114,6 +112,8 @@ class Follow : CharacterState
         base.UpdateState();
         if (transform.gameObject.GetComponent<CharacterStateController>().pv <= 0)
         {
+            path[0].GetComponent<GridStat>().isDestinationForEntity = false;
+            path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = false;
             return Exit(new Death());
         }
         if (IsIAarrivedEtape(0, path))
@@ -124,23 +124,27 @@ class Follow : CharacterState
             transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
             if (characterPosInit != characterTarget.GetComponent<CharacterStateController>().positionOfCharacter)
             {
+                path[0].GetComponent<GridStat>().isDestinationForEntity = false;
+                path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = false;
                 return Exit(new Follow());
             }
-            
+            Debug.Log(transform.gameObject.name + "Attack Mvt End");
             return Exit(new Attack());   
         }
 
         else if (IsIAarrivedEtape(etapeMvmtIA, path))
         {
+            
+            if(Vector3.Distance(characterTarget.transform.position, transform.position) < rangeToAttackPlayer)
+            {
+                path[0].GetComponent<GridStat>().isDestinationForEntity = false;
+                transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
+                Debug.Log(transform.gameObject.name + "Attack Mvt Etape");
+                return Exit(new Attack());
+            }
             path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = false;
             etapeMvmtIA--;
             positionOfCharacter = path[etapeMvmtIA].GetComponent<GridStat>().posInGridArray;
-            if(Vector3.Distance(characterTarget.transform.position, transform.position) < rangeToAttackPlayer)
-            {
-                transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
-                //Debug.Log("Attacking");
-                return Exit(new Attack());
-            }
             return this;
         }
         else

@@ -124,7 +124,6 @@ public abstract class CharacterState
             {
                 dest = Random.Range(0, rangeOfAction);
             }
-            Debug.Log(dest);
             return dest;
         }
         

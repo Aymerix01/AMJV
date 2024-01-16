@@ -61,7 +61,7 @@ public class CharacterStateController : MonoBehaviour
         if (opponentToAttack == null)
         {
             GameObject playerTarget = currentState.GetPlayerTransform();
-            if (rangeToAttackOpponent <= 1)
+            if (rangeToAttackOpponent <= 1.5)
             {
                 playerTarget.GetComponent<CharacterStateController>().pv -= attackDmg / armor;
             }

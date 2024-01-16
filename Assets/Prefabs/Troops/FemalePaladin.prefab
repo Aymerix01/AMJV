@@ -6115,7 +6115,8 @@ MonoBehaviour:
   armor: 1
   timeWaiting: 1
   rangeToSeeOpponent: 3
-  rangeToAttackOpponent: 1
+  rangeToAttackOpponent: 1.5
+  gridArray: []
   selected: 0
   pv: 0
   healthBar: {fileID: 5269337361423666208}
@@ -6123,6 +6124,7 @@ MonoBehaviour:
   FlagImg: {fileID: 7596306841245776997}
   possessFlag: 0
   opponentToAttack: {fileID: 0}
+  rangeOfAction: 0
 --- !u!114 &6307661005633317237
 MonoBehaviour:
   m_ObjectHideFlags: 0

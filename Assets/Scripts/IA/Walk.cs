@@ -104,19 +104,21 @@ class Walk : CharacterState
         base.UpdateState();
         if (transform.gameObject.GetComponent<CharacterStateController>().pv <= 0)
         {
+            path[0].GetComponent<GridStat>().isDestinationForEntity = false;
+            path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = false;
+           
             return Exit(new Death());
         }
         if (SeePlayer())
         {
-            foreach(GameObject p in path)
-            {
-                p.GetComponent<GridStat>().isDestinationForEntity = false;
-                p.GetComponent<GridStat>().hasEntityOnIt = false;
-            }
+            path[0].GetComponent<GridStat>().isDestinationForEntity = false;
+            path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = false;
             return Exit(new Follow());
         }
         if (Input.GetMouseButtonDown(1) && unitsSelected.Contains(transform.gameObject))
         {
+            path[0].GetComponent<GridStat>().isDestinationForEntity = false;
+            path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = false;
             return Exit(new Walk());
         }
         if (IsIAarrivedEtape(0, path))

@@ -29,13 +29,12 @@ public class Selected : CharacterState
             if (Physics.Raycast(ray, out hit))
             {
                 int layer = hit.collider.gameObject.layer;
-                if (layer == 6 && !hit.collider.gameObject.GetComponent<GridStat>().hasEntityOnIt)
+                if (layer == 6 && !hit.collider.CompareTag("Hole") && !hit.collider.gameObject.GetComponent<GridStat>().hasEntityOnIt)
                 {
                     return Exit(new Walk());
                 }
                 if(hit.collider.gameObject.tag == "Enemy")
                 {
-                    Debug.Log("Following");
                     return Exit(new Follow());
                 }
             }
