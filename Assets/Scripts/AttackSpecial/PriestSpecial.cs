@@ -8,7 +8,7 @@ public class PriestSpecial : MonoBehaviour
     [SerializeField] private float radiusSpeAttack;
     [SerializeField] private float heal;
 
-    private List<GameObject> playerHealed;
+    private List<GameObject> playersHealed;
 
     private bool waiting;
     private CharacterStateController characterStateController;
@@ -16,7 +16,7 @@ public class PriestSpecial : MonoBehaviour
     private void Start()
     {
         waiting = false;
-        playerHealed = new List<GameObject>();
+        playersHealed = new List<GameObject>();
         characterStateController = GetComponent<CharacterStateController>();
     }
 
@@ -35,7 +35,7 @@ public class PriestSpecial : MonoBehaviour
                 GameObject obj = hit.collider.gameObject;
                 if (obj.CompareTag("Player"))
                 {
-                    playerHealed.Add(obj);
+                    playersHealed.Add(obj);
                     obj.GetComponent<CharacterStateController>().pv = Mathf.Min(obj.GetComponent<CharacterStateController>().health, obj.GetComponent<CharacterStateController>().pv + heal);
                 }
             }
