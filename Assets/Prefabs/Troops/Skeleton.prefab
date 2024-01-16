@@ -439,15 +439,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e1f665e80c8db564eb2fe93b3dfadb82, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.716
+      value: 3.89448
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e1f665e80c8db564eb2fe93b3dfadb82, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.358
+      value: 0.35771716
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e1f665e80c8db564eb2fe93b3dfadb82, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.283
+      value: 0.92714095
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e1f665e80c8db564eb2fe93b3dfadb82, type: 3}
       propertyPath: m_LocalRotation.w
@@ -823,7 +823,7 @@ MonoBehaviour:
   speed: 1
   attackDmg: 10
   armor: 1
-  timeWaiting: 1
+  timeWaiting: 10
   rangeToSeeOpponent: 3
   rangeToAttackOpponent: 3
   selected: 0
