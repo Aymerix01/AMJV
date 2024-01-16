@@ -64,6 +64,7 @@ public class CharacterStateController : MonoBehaviour
             if (rangeToAttackOpponent <= 1.5)
             {
                 playerTarget.GetComponent<CharacterStateController>().pv -= attackDmg / armor;
+                Debug.Log(playerTarget.GetComponent<CharacterStateController>().pv);
             }
             else
             {
@@ -79,7 +80,7 @@ public class CharacterStateController : MonoBehaviour
         }
         else
         {
-            if (rangeToAttackOpponent <= 1)
+            if (rangeToAttackOpponent <= 1.5)
             {
                 opponentToAttack.GetComponent<CharacterStateController>().pv -= attackDmg / armor;
             }

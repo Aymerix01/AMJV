@@ -1,12 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 class Attack : CharacterState
 {
     private GameObject characterTarget;
     private int posPlayer;
+    private List<GameObject> unitsSelected;
     public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
     {
         base.Enter(characterT, posCharacter, s, t, r, ra, g);
+        unitsSelected = GameObject.FindWithTag("Game Manager").GetComponentInChildren<UnitSelections>().unitsSelected;
         if (transform.gameObject.tag == "Enemy")
         {
             characterTarget = GetPlayerTransform();
@@ -47,6 +50,11 @@ class Attack : CharacterState
         if (transform.gameObject.GetComponent<CharacterStateController>().pv <= 0)
         {
             return Exit(new Death());
+        }
+        if (Input.GetMouseButtonDown(1) && unitsSelected.Contains(transform.gameObject))
+        {
+            transform.gameObject.GetComponent<Animator>().SetBool("isAttacking", false);
+            return Exit(new Walk());
         }
         if (characterTarget.GetComponent<CharacterStateController>().pv <= 0)
         {

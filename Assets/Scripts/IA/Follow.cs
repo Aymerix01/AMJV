@@ -13,7 +13,7 @@ class Follow : CharacterState
     private int etapeMvmtIA;
     private int characterPosInit;
 
-
+    private bool oneTime = true;
 
     private int SetDestinationToFollowCharacter()
     {
@@ -24,6 +24,7 @@ class Follow : CharacterState
             if (voisin != null && !voisin.GetComponent<GridStat>().hasEntityOnIt && !voisin.GetComponent<GridStat>().isDestinationForEntity)
             {
                 voisinsIndex.Add(voisin.GetComponent<GridStat>().posInGridArray);
+                //Debug.Log(voisin.GetComponent<GridStat>().posInGridArray);
             }
         }
         if (voisinsIndex.Count > 0)
@@ -84,7 +85,6 @@ class Follow : CharacterState
                 Debug.Log("PlayerTarget is Null");
                 return Exit(new Idle());
             }
-            Debug.Log(characterTarget.name);
 
             if (characterTarget.tag == "Enemy")
             {
@@ -110,39 +110,43 @@ class Follow : CharacterState
     public override CharacterState UpdateState()
     {
         base.UpdateState();
+
         if (transform.gameObject.GetComponent<CharacterStateController>().pv <= 0)
         {
             path[0].GetComponent<GridStat>().isDestinationForEntity = false;
             path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = false;
+            path[etapeMvmtIA].GetComponent<GridStat>().nbrEntityOnIt -= 1;
             return Exit(new Death());
         }
         if (IsIAarrivedEtape(0, path))
         {
             path[etapeMvmtIA].GetComponent<GridStat>().isDestinationForEntity = false;
             gridArray[positionOfCharacter].GetComponent<GridStat>().hasEntityOnIt = true;
+            path[etapeMvmtIA].GetComponent<GridStat>().nbrEntityOnIt += 1;
             positionOfCharacter = path[0].GetComponent<GridStat>().posInGridArray;
             transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
             if (characterPosInit != characterTarget.GetComponent<CharacterStateController>().positionOfCharacter)
             {
                 path[0].GetComponent<GridStat>().isDestinationForEntity = false;
                 path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = false;
+                path[etapeMvmtIA].GetComponent<GridStat>().nbrEntityOnIt -= 1;
                 return Exit(new Follow());
             }
-            Debug.Log(transform.gameObject.name + "Attack Mvt End");
             return Exit(new Attack());   
         }
 
         else if (IsIAarrivedEtape(etapeMvmtIA, path))
         {
-            
-            if(Vector3.Distance(characterTarget.transform.position, transform.position) < rangeToAttackPlayer)
+            oneTime = true;
+            if (Vector3.Distance(characterTarget.transform.position, transform.position) < rangeToAttackPlayer && path[etapeMvmtIA].GetComponent<GridStat>().nbrEntityOnIt==1)
             {
+                Debug.Log("aaaaaaa");
                 path[0].GetComponent<GridStat>().isDestinationForEntity = false;
                 transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
-                Debug.Log(transform.gameObject.name + "Attack Mvt Etape");
                 return Exit(new Attack());
             }
             path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = false;
+            path[etapeMvmtIA].GetComponent<GridStat>().nbrEntityOnIt -= 1;
             etapeMvmtIA--;
             positionOfCharacter = path[etapeMvmtIA].GetComponent<GridStat>().posInGridArray;
             return this;
@@ -150,6 +154,11 @@ class Follow : CharacterState
         else
         {
             path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = true;
+            if (oneTime)
+            {
+                path[etapeMvmtIA].GetComponent<GridStat>().nbrEntityOnIt += 1;
+                oneTime = false;
+            }
             transform.position = Vector3.MoveTowards(transform.position,
                                             new Vector3(path[etapeMvmtIA].transform.position.x,
                                             0.34f + path[etapeMvmtIA].transform.position.y,

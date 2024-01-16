@@ -14,6 +14,7 @@ public class GridStat : MonoBehaviour
 
     /*[HideInInspector]*/ public bool hasEntityOnIt = false;
     /*[HideInInspector]*/ public bool isDestinationForEntity = false;
+    public int nbrEntityOnIt = 0;
 
     private void Awake()
     {
