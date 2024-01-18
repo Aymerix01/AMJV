@@ -51,19 +51,22 @@ class Walk : CharacterState
                 foreach (GameObject unit in unitsSelected) 
                 {
                     int i = unitsSelected.IndexOf(transform.gameObject);
-                    Debug.Log(i +" "+ unit);
-                    //Debug.Log(voisins.Length);
+
+                    if (i > 6)
+                    {
+                        return positionOfCharacter;
+                    }
                     if (i == 0)
                     {
                         return tile.GetComponent<GridStat>().posInGridArray;
                     }
-                    else if (voisins[i] == null)
+                    else if (voisins[i-1] == null)
                     {
                         return positionOfCharacter;
                     }
                     else if (!voisins[i-1].GetComponent<GridStat>().hasEntityOnIt)
                     {
-                        return voisins[i - 1].GetComponent<GridStat>().posInGridArray;
+                        return voisins[i-1].GetComponent<GridStat>().posInGridArray;
                     }
                     else
                     {
@@ -86,7 +89,7 @@ class Walk : CharacterState
         {
             end = ChooseDestinationClickSingle();
         }
-        else if (transform.gameObject.layer == 7 && unitsSelected.Count > 1) //&& unitsSelected.Count < 7)
+        else if (transform.gameObject.layer == 7 && unitsSelected.Count > 1)
         { 
             end = ChooseDestinationClickMultiple();
         }

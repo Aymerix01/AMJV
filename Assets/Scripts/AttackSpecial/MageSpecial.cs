@@ -42,7 +42,6 @@ public class MageSpecial : MonoBehaviour
                 if (hitPlat.collider.gameObject.layer == 6)
                 {
                     Vector3 aiming = hitPlat.transform.position;
-                    Debug.Log(aiming);
                     target.SetActive(true);
                     aiming.y += 0.4f;
                     target.transform.position = aiming;
