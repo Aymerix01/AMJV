@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -62,10 +61,4 @@ public class UnitSelections : MonoBehaviour
         }
         unitsSelected.Clear();
     }
-
-    public void Deselect(GameObject unitToDeselect)
-    {
-
-    }
-
 }

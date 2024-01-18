@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -17,11 +16,6 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButton(0))
-        {
-            //do something
-        }
-
         if (Input.GetMouseButtonDown(0) && positionInGrid != null)
         {
             destinationInGrid = getTilePosition();
@@ -56,10 +50,8 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             int layer = hit.collider.gameObject.layer;
-            //layer 6 == platform
-            if (layer == 6)
+            if (layer == 6) //layer 6 == platform
             {
-                //Obtention de la position sur la tilemap
                 GameObject tile = hit.collider.gameObject;
                 tilePosition = grid.LocalToCell(tile.transform.position);
             }

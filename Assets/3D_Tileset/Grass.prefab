@@ -312,9 +312,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ccd474d607d7c7141b32f92740123f41, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -8700955913596263482}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ccd474d607d7c7141b32f92740123f41, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2231933423544241228}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ccd474d607d7c7141b32f92740123f41, type: 3}
       insertIndex: -1
@@ -333,18 +330,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ccd474d607d7c7141b32f92740123f41, type: 3}
   m_PrefabInstance: {fileID: 5166920175548333288}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-8700955913596263482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5437532877641630137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c9594084cdee8a42886b7941b25495b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &2231933423544241228
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -383,6 +368,7 @@ MonoBehaviour:
   voisins: []
   hasEntityOnIt: 0
   isDestinationForEntity: 0
+  nbrEntityOnIt: 0
 --- !u!114 &-2652519744493752191
 MonoBehaviour:
   m_ObjectHideFlags: 0

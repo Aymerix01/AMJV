@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMouvement : MonoBehaviour
@@ -17,15 +15,11 @@ public class CameraMouvement : MonoBehaviour
 
     private Vector3 zoomDir = new Vector3(0, -Mathf.Sin(Mathf.Deg2Rad*20), Mathf.Cos(Mathf.Deg2Rad * 20));
 
-    private void Start()
-    {
-        //Time.timeScale = 10f;
-    }
-
     void Update()
     {
         float horizontalMovement = Input.GetAxis("Horizontal");
         float verticalMovement = Input.GetAxis("Vertical");
+        float zoomInput = Input.GetAxis("Mouse ScrollWheel");
 
         Vector3 moveDirection = new Vector3(horizontalMovement, 0f, verticalMovement);
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.Self);
@@ -38,7 +32,6 @@ public class CameraMouvement : MonoBehaviour
         {
             transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime, Space.World);
         }
-        float zoomInput = Input.GetAxis("Mouse ScrollWheel");
         if (transform.position.y <= minZoom)
         {
             zoomInput = zoomInput >= 0 ? 0 : zoomInput;

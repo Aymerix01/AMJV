@@ -52,7 +52,6 @@ public class PaladinAttackSpe : MonoBehaviour
             oneTime = false;
             foreach (GameObject obj in playerBoosted)
             {
-                Debug.Log("aaaaaa");
                 obj.GetComponent<CharacterStateController>().armor -= boostArmor;
             }
             playerBoosted.Clear();

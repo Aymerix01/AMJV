@@ -12,6 +12,7 @@ class Death : CharacterState
         base.Enter(characterT, posCharacter, s, t, r, ra, g);
         transform.gameObject.GetComponent<Animator>().SetBool("isDead", true);
         transform.gameObject.tag = "Untagged";
+        transform.gameObject.GetComponent<Collider>().enabled = false;
         gridArray[posCharacter].gameObject.GetComponent<GridStat>().hasEntityOnIt = false;
         if (characterT.gameObject.GetComponent<CharacterStateController>().possessFlag)
         {

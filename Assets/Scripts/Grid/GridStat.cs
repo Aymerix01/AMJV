@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,8 +11,8 @@ public class GridStat : MonoBehaviour
 
     private float radiusToFindVoisins;
 
-    /*[HideInInspector]*/ public bool hasEntityOnIt = false;
-    /*[HideInInspector]*/ public bool isDestinationForEntity = false;
+    public bool hasEntityOnIt = false;
+    public bool isDestinationForEntity = false;
     public int nbrEntityOnIt = 0;
 
     private void Awake()

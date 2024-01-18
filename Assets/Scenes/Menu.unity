@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: b3713af5e7315ea4ba92775f9b9b1c2b, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44506884, g: 0.44287074, b: 0.44287074, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -615,6 +615,7 @@ PrefabInstance:
     - {fileID: 1353953335464718068, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
     - {fileID: 4289188008300826475, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
     - {fileID: 8662636221378408004, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
+    - {fileID: 6877847519363563918, guid: 7b18f7ef15e2b0d4b8ddd95072f6c816, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1969,7 +1970,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2652519744493752191, guid: fc63bf80beaa265479bc9e27a87914b3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2135,7 +2137,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -3661469680991712342, guid: 9866981c23c1fac4fa4d163917095ee3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2986,6 +2989,7 @@ PrefabInstance:
     - {fileID: -197227937023099373, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
     - {fileID: -2380073312875347, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
     - {fileID: 7315802134591897523, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
+    - {fileID: 3127100753156600562, guid: ffd8000afdc24404c8176765d7e3402b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
