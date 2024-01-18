@@ -7,7 +7,7 @@ public class GridStat : MonoBehaviour
 
     public int posInGridArray;
 
-    public GameObject[] voisins;
+    public GridStat[] voisins;
 
     private float radiusToFindVoisins;
 
@@ -23,9 +23,8 @@ public class GridStat : MonoBehaviour
     private void GetPlatformVoisins()
     {
         v = new Dictionary<string, int>();
-        voisins = new GameObject[6];
+        voisins = new GridStat[6];
         radiusToFindVoisins = 0.866f;
-
         RaycastHit[] hits;
         hits = Physics.SphereCastAll(transform.position,
                                radiusToFindVoisins,
@@ -36,7 +35,7 @@ public class GridStat : MonoBehaviour
         {
             if (hit.transform.position != transform.position && hit.collider.gameObject.layer == 6 && hit.transform.gameObject.tag != "Hole")
             {
-                voisins[i] = hit.transform.gameObject;
+                voisins[i] = hit.transform.gameObject.GetComponent<GridStat>();
                 i++;
             }
         }

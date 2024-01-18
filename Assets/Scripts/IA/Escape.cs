@@ -1,36 +1,39 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 class Escape : CharacterState
 {
-    private GameObject[] path;
+    private GridStat[] path;
 
     private int etapeMvmtIA;
 
+    private Camera camera;
+    private Animator animator;
+    private CharacterStateController characterStateController;
+
     private int ChooseDestinationClick()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-
         if (Physics.Raycast(ray, out hit))
         {
             int layer = hit.collider.gameObject.layer;
-            //layer 6 == platform
-            if (layer == 6)
+            if (layer == 6) //layer 6 == platform
             {
-                //Obtention de la position sur la tilemap
                 GameObject tile = hit.collider.gameObject;
                 return tile.GetComponent<GridStat>().posInGridArray;
             }
         }
         return 0;
     }
-    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
-    {
 
+    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GridStat[] g)
+    {
         base.Enter(characterT, posCharacter, s, t, r, ra, g);
+        camera = Camera.main;
+        animator = transform.GetComponent<Animator>();
+        characterStateController = transform.GetComponent<CharacterStateController>();
+        animator.SetBool("isWalking", false);
         int end;
-        transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
         if (transform.gameObject.layer == 7)
         {
             end = ChooseDestinationClick();
@@ -47,28 +50,28 @@ class Escape : CharacterState
     public override CharacterState UpdateState()
     {
         base.UpdateState();
-        if (transform.gameObject.GetComponent<CharacterStateController>().pv <= 0)
+        if (characterStateController.pv <= 0)
         {
             return Exit(new Death());
         }
         if (IsIAarrivedEtape(0, path))
         {
-            path[etapeMvmtIA].GetComponent<GridStat>().isDestinationForEntity = false;
-            positionOfCharacter = path[0].GetComponent<GridStat>().posInGridArray;
-            transform.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
+            path[etapeMvmtIA].isDestinationForEntity = false;
+            positionOfCharacter = path[0].posInGridArray;
+            animator.SetBool("isWalking", false);
             return Exit(new Idle());
         }
         else if (IsIAarrivedEtape(etapeMvmtIA, path))
         {
-            path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = false;
+            path[etapeMvmtIA].hasEntityOnIt = false;
             etapeMvmtIA--;
-            positionOfCharacter = path[etapeMvmtIA].GetComponent<GridStat>().posInGridArray;
+            positionOfCharacter = path[etapeMvmtIA].posInGridArray;
             return this;
         }
         else
         {
-            path[etapeMvmtIA].GetComponent<GridStat>().hasEntityOnIt = true;
-            transform.gameObject.GetComponent<Animator>().SetBool("isWalking", true);
+            path[etapeMvmtIA].hasEntityOnIt = true;
+            animator.SetBool("isWalking", true);
             transform.position = Vector3.MoveTowards(transform.position,
                                             new Vector3(path[etapeMvmtIA].transform.position.x,
                                             0.34f + path[etapeMvmtIA].transform.position.y,

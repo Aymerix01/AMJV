@@ -1,32 +1,29 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 class FindPath
 {
-
-    public static GameObject[] GetPathIA(Transform characterTransform, int startOfTheTravel, int endOfTheTravel, GameObject[] gridArray)
+    public static GridStat[] GetPathIA(Transform characterTransform, int startOfTheTravel, int endOfTheTravel, GridStat[] gridArray)
     {
         string nameGameObject = characterTransform.gameObject.name;
-        List<GameObject> path = new List<GameObject>();
-
+        List<GridStat> path = new List<GridStat>();
         if (gridArray[endOfTheTravel] != null)
         {
-            gridArray[endOfTheTravel].GetComponent<GridStat>().isDestinationForEntity = true;
+            gridArray[endOfTheTravel].isDestinationForEntity = true;
             SetDistance(nameGameObject, startOfTheTravel, gridArray);
             SetPath(nameGameObject, startOfTheTravel, endOfTheTravel, gridArray, path);
         }
         return path.ToArray();
     }
 
-    private static void SetDistance(string nameGameObject, int startOfTheTravel, GameObject[] gridArray)
+    private static void SetDistance(string nameGameObject, int startOfTheTravel, GridStat[] gridArray)
     {
         gridArray = InitialSetup(nameGameObject, startOfTheTravel, gridArray);
         for (int step = 1; step < gridArray.Length; step++)
         {
-            foreach (GameObject platforme in gridArray)
+            foreach (GridStat platforme in gridArray)
             {
-                if (platforme && platforme.GetComponent<GridStat>().v[nameGameObject] == step - 1)
+                if (platforme != null && platforme.v[nameGameObject] == step - 1)
                 {
                     TestDirection(nameGameObject, step, platforme);
                 }
@@ -34,31 +31,31 @@ class FindPath
         }
     }
 
-    private static GameObject[] InitialSetup(string nameGameObject, int startOfTheTravel, GameObject[] gridArray)
+    private static GridStat[] InitialSetup(string nameGameObject, int startOfTheTravel, GridStat[] gridArray)
     {
-        foreach (GameObject platform in gridArray)
+        foreach (GridStat platform in gridArray)
         {
-            if (platform != null && platform.name != "Hole")
+            if (platform != null && platform.gameObject.name != "Hole")
             {
-                platform.GetComponent<GridStat>().v[nameGameObject] = -1;
+                platform.v[nameGameObject] = -1;
             }
         }
-        gridArray[startOfTheTravel].GetComponent<GridStat>().v[nameGameObject] = 0;
+        gridArray[startOfTheTravel].v[nameGameObject] = 0;
         return gridArray;
     }
 
-    private static void TestDirection(string nameGameObject, int step, GameObject platforme)
+    private static void TestDirection(string nameGameObject, int step, GridStat platforme)
     {
-        foreach (GameObject platformeVoisine in platforme.GetComponent<GridStat>().voisins)
+        foreach (GridStat platformeVoisine in platforme.voisins)
         {
-            if (platformeVoisine && platformeVoisine.GetComponent<GridStat>().v[nameGameObject] == -1)
+            if (platformeVoisine != null && platformeVoisine.v[nameGameObject] == -1)
             {
                 SetVisited(nameGameObject, step, platformeVoisine);
             }
         }
     }
 
-    private static void SetVisited(string nameGameObject, int step, GameObject platforme)
+    private static void SetVisited(string nameGameObject, int step, GridStat platforme)
     {
         if (platforme != null && platforme.name != "Hole")
         {
@@ -66,44 +63,40 @@ class FindPath
         }
     }
 
-    private static List<GameObject> SetPath(string nameGameObject, int startOfTheTravel, int endOfTheTravel, GameObject[] gridArray, List<GameObject> path)
+    private static List<GridStat> SetPath(string nameGameObject, int startOfTheTravel, int endOfTheTravel, GridStat[] gridArray, List<GridStat> path)
     {
         int step;
         int fin = endOfTheTravel;
-        List<GameObject> list = new List<GameObject>();
+        List<GridStat> list = new List<GridStat>();
         path.Clear();
-        if (gridArray[endOfTheTravel] && gridArray[endOfTheTravel].GetComponent<GridStat>().v[nameGameObject] > 0)
+        if (gridArray[endOfTheTravel] && gridArray[endOfTheTravel].v[nameGameObject] > 0)
         {
             path.Add(gridArray[fin]);
-            step = gridArray[fin].GetComponent<GridStat>().v[nameGameObject] - 1;
+            step = gridArray[fin].v[nameGameObject] - 1;
         }
         else
         {
-            //Debug.Log(nameGameObject);
-            //Debug.Log(endOfTheTravel);
-            //Debug.Log("Can't reach the desired location");
             path.Add(gridArray[startOfTheTravel]);
             return path;
         }
-
         for (int i = step; i > -1; i--)
         {
-            foreach (GameObject platformeVoisine in gridArray[fin].GetComponent<GridStat>().voisins)
+            foreach (GridStat platformeVoisine in gridArray[fin].voisins)
             {
-                if (platformeVoisine && platformeVoisine.GetComponent<GridStat>().v[nameGameObject] == i)
+                if (platformeVoisine && platformeVoisine.v[nameGameObject] == i)
                 {
                     list.Add(platformeVoisine);
                 }
             }
-            GameObject tempObj = FindClosest(gridArray[endOfTheTravel].transform, gridArray, list);
+            GridStat tempObj = FindClosest(gridArray[endOfTheTravel].transform, gridArray, list);
             path.Add(tempObj);
-            fin = tempObj.GetComponent<GridStat>().posInGridArray;
+            fin = tempObj.posInGridArray;
             list.Clear();
         }
         return path;
     }
 
-    private static GameObject FindClosest(Transform targetLocation, GameObject[] gridArray, List<GameObject> list)
+    private static GridStat FindClosest(Transform targetLocation, GridStat[] gridArray, List<GridStat> list)
     {
         float currentDistance = gridArray.Length;
         int indexNumber = 0;

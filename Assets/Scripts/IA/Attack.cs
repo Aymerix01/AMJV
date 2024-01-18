@@ -3,12 +3,17 @@ using UnityEngine;
 
 class Attack : CharacterState
 {
-    private GameObject characterTarget;
+    private CharacterStateController characterTarget;
     private int posPlayer;
     private List<GameObject> unitsSelected;
-    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
+
+    private CharacterStateController characterStateController;
+    private Animator animator;
+    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GridStat[] g)
     {
         base.Enter(characterT, posCharacter, s, t, r, ra, g);
+        characterStateController = transform.GetComponent<CharacterStateController>();
+        animator = transform.GetComponent<Animator>();
         unitsSelected = GameObject.FindWithTag("Game Manager").GetComponentInChildren<UnitSelections>().unitsSelected;
         if (transform.gameObject.tag == "Enemy")
         {
@@ -18,25 +23,25 @@ class Attack : CharacterState
 
                 return Exit(new Idle());
             }
-            posPlayer = characterTarget.GetComponent<CharacterStateController>().positionOfCharacter;
+            posPlayer = characterTarget.positionOfCharacter;
             transform.LookAt(new Vector3(gridArray[posPlayer].transform.position.x,
                                              transform.position.y,
                                              gridArray[posPlayer].transform.position.z));
-            transform.gameObject.GetComponent<Animator>().SetBool("isAttacking", true);
+            animator.SetBool("isAttacking", true);
             return this;
         }
         else if (transform.gameObject.tag == "Player")
         {
-            characterTarget = transform.gameObject.GetComponent<CharacterStateController>().opponentToAttack;
+            characterTarget = characterStateController.opponentToAttack;
             if (characterTarget == null)
             {
                 return Exit(new Idle());
             }
-            posPlayer = characterTarget.GetComponent<CharacterStateController>().positionOfCharacter;
+            posPlayer = characterTarget.positionOfCharacter;
             transform.LookAt(new Vector3(gridArray[posPlayer].transform.position.x,
                                              transform.position.y,
                                              gridArray[posPlayer].transform.position.z));
-            transform.gameObject.GetComponent<Animator>().SetBool("isAttacking", true);
+            animator.SetBool("isAttacking", true);
             return this;
         }
         return this;

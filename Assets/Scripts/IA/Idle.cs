@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +6,7 @@ class Idle : CharacterState
     private bool waiting = false;
     private float time;
     private List<GameObject> unitsSelected;
+    private CharacterStateController characterStateController;
     private void Wait()
     {
         waiting = true;
@@ -17,10 +17,10 @@ class Idle : CharacterState
         time += Time.deltaTime;
     }
 
-    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
+    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GridStat[] g)
     {
-
         base.Enter(characterT, posCharacter, s, t, r, ra, g);
+        characterStateController = transform.GetComponent<CharacterStateController>();
         unitsSelected = GameObject.FindWithTag("Game Manager").GetComponentInChildren<UnitSelections>().unitsSelected;
         return this;
     }
@@ -29,14 +29,12 @@ class Idle : CharacterState
     {
         base.UpdateState();
         Wait();
-        gridArray[positionOfCharacter].GetComponent<GridStat>().hasEntityOnIt = true;
-
-        if (transform.gameObject.GetComponent<CharacterStateController>().pv <= 0)
+        gridArray[positionOfCharacter].hasEntityOnIt = true;
+        if (characterStateController.pv <= 0)
         {
             return Exit(new Death());
         }
         if ( transform.gameObject.layer == 7 && unitsSelected.Contains(transform.gameObject))
-
         {
             return Exit(new Selected());
         }

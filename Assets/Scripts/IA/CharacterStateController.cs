@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +13,7 @@ public class CharacterStateController : MonoBehaviour
     [SerializeField] private float timeWaiting;
     [SerializeField] private float rangeToSeeOpponent;
     [SerializeField] private float rangeToAttackOpponent;
-    [HideInInspector] public GameObject[] gridArray;
+    [HideInInspector] public GridStat[] gridArray;
 
     public bool selected;
 
@@ -26,7 +25,7 @@ public class CharacterStateController : MonoBehaviour
 
     public bool possessFlag;
 
-    public GameObject opponentToAttack;
+    public CharacterStateController opponentToAttack;
 
     public int rangeOfAction;
 
@@ -57,24 +56,22 @@ public class CharacterStateController : MonoBehaviour
 
     public void GetAttacked()
     {
-        
         if (opponentToAttack == null)
         {
-            GameObject playerTarget = currentState.GetPlayerTransform();
+            CharacterStateController playerTarget = currentState.GetPlayerTransform();
             if (rangeToAttackOpponent <= 1.5 && playerTarget != null)
             {
-                playerTarget.GetComponent<CharacterStateController>().pv -= attackDmg / opponentToAttack.GetComponent<CharacterStateController>().armor;
-                Debug.Log(playerTarget.GetComponent<CharacterStateController>().pv);
+                playerTarget.pv -= attackDmg / playerTarget.armor;
             }
             else
             {
                 if (projectile != null && playerTarget != null)
                 {
-                    GameObject p = Instantiate(projectile);
+                    Projectile p = Instantiate(projectile).GetComponent<Projectile>();
                     p.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
-                    p.GetComponent<Projectile>().target = playerTarget.transform;
-                    p.GetComponent<Projectile>().attackDmg = attackDmg;
-                    p.GetComponent<Projectile>().armor = playerTarget.GetComponent<CharacterStateController>().armor;
+                    p.target = playerTarget.transform;
+                    p.attackDmg = attackDmg;
+                    p.armor = playerTarget.armor;
                 }
             }
         }
@@ -82,17 +79,17 @@ public class CharacterStateController : MonoBehaviour
         {
             if (rangeToAttackOpponent <= 1.5)
             {
-                opponentToAttack.GetComponent<CharacterStateController>().pv -= attackDmg / opponentToAttack.GetComponent<CharacterStateController>().armor;
+                opponentToAttack.pv -= attackDmg / opponentToAttack.armor;
             }
             else
             {
                 if (projectile != null)
                 {
-                    GameObject p = Instantiate(projectile);
+                    Projectile p = Instantiate(projectile).GetComponent<Projectile>();
                     p.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
-                    p.GetComponent<Projectile>().target = opponentToAttack.transform;
-                    p.GetComponent<Projectile>().attackDmg = attackDmg;
-                    p.GetComponent<Projectile>().armor = opponentToAttack.GetComponent<CharacterStateController>().armor;
+                    p.target = opponentToAttack.transform;
+                    p.attackDmg = attackDmg;
+                    p.armor = opponentToAttack.armor;
                 }
             }
         }

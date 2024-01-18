@@ -1,15 +1,17 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Selected : CharacterState
 {
     private List<GameObject> unitsSelected;
-    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
+    private CharacterStateController characterStateController;
+    private Camera camera;
+    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GridStat[] g)
     {
         base.Enter(characterT, posCharacter, s, t, r, ra, g);
-        transform.gameObject.GetComponent<CharacterStateController>().selected = true;
+        characterStateController = transform.GetComponent<CharacterStateController>();
+        camera = Camera.main;
+        characterStateController.selected = true;
         unitsSelected = GameObject.FindWithTag("Game Manager").GetComponentInChildren<UnitSelections>().unitsSelected;
         return this;
     }
@@ -17,15 +19,14 @@ public class Selected : CharacterState
     public override CharacterState UpdateState()
     {
         base.UpdateState();
-        if (transform.gameObject.GetComponent<CharacterStateController>().pv <= 0)
+        if (characterStateController.pv <= 0)
         {
             return Exit(new Death());
         }
         if (Input.GetMouseButtonDown(1))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-
             if (Physics.Raycast(ray, out hit))
             {
                 int layer = hit.collider.gameObject.layer;

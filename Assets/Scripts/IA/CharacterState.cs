@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class CharacterState
@@ -11,13 +9,15 @@ public abstract class CharacterState
     protected float rangeToSeePlayer;
     protected float rangeToSeeEnemy;
     protected float rangeToAttackPlayer;
-    protected GameObject[] gridArray;
+    protected GridStat[] gridArray;
 
 
     private float rangeToSeeOpponent;
-    
+    private GameObject[] players;
+    private GameObject[] Enemies;
+    private CharacterStateController characterStateController;
 
-    public virtual CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
+    public virtual CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GridStat[] g)
     {
         transform = characterT;
         positionOfCharacter = posCharacter;
@@ -35,6 +35,9 @@ public abstract class CharacterState
             rangeToSeeEnemy = 0;
         }
         rangeToAttackPlayer = ra;
+        players = GameObject.FindGameObjectsWithTag("Player");
+        Enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        characterStateController = transform.GetComponent<CharacterStateController>();
         return this;
     }
     
@@ -47,10 +50,8 @@ public abstract class CharacterState
         newState = newState.Enter(transform, positionOfCharacter, speed, timeWaiting, rangeToSeeOpponent, rangeToAttackPlayer, gridArray);
         return newState;
     }
-
     protected bool SeePlayer()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject player in players)
         {
             if (Vector3.Distance(player.transform.position, transform.position) < rangeToSeePlayer)
@@ -60,7 +61,7 @@ public abstract class CharacterState
         }
         return false;
     }
-    protected bool IsIAarrivedEtape(int etape, GameObject[] path)
+    protected bool IsIAarrivedEtape(int etape, GridStat[] path)
     {
         if (transform.position == new Vector3(path[etape].transform.position.x, 0.34f + path[etape].transform.position.y, path[etape].transform.position.z))
         {
@@ -71,9 +72,8 @@ public abstract class CharacterState
             return false;
         }
     }
-    public GameObject GetPlayerTransform()
+    public CharacterStateController GetPlayerTransform()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         float closestPlayer = rangeToSeePlayer;
         GameObject target = null;
         foreach (GameObject player in players)
@@ -84,12 +84,10 @@ public abstract class CharacterState
                 target = player;
             }
         }
-        return target;
+        return target.GetComponent<CharacterStateController>();
     }
-
-    public GameObject[] GetEnemiesGameObject()
+    /*public GameObject[] GetEnemiesGameObject()
     {
-        GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
         List<GameObject> enemiesSeen = new List<GameObject>();
         foreach (GameObject enemy in Enemies)
         {
@@ -99,16 +97,15 @@ public abstract class CharacterState
             }
         }
         return enemiesSeen.ToArray();
-    }
-
+    }*/
     protected int ChooseDestinationRandom()
     {
-        int rangeOfAction = transform.gameObject.GetComponent<CharacterStateController>().rangeOfAction;
+        int rangeOfAction = characterStateController.rangeOfAction;
         if(rangeOfAction == 0)
         {
             int dest = Random.Range(0, gridArray.Length - 1);
-            while (gridArray[dest] == null || gridArray[dest].GetComponent<GridStat>().hasEntityOnIt ||
-                gridArray[dest].GetComponent<GridStat>().isDestinationForEntity ||
+            while (gridArray[dest] == null || gridArray[dest].hasEntityOnIt ||
+                gridArray[dest].isDestinationForEntity ||
                 dest == positionOfCharacter)
             {
                 dest = Random.Range(0, gridArray.Length - 1);
@@ -118,8 +115,8 @@ public abstract class CharacterState
         else
         {
             int dest = Random.Range(0, rangeOfAction);
-            while (gridArray[dest] == null || gridArray[dest].GetComponent<GridStat>().hasEntityOnIt ||
-                gridArray[dest].GetComponent<GridStat>().isDestinationForEntity ||
+            while (gridArray[dest] == null || gridArray[dest].hasEntityOnIt ||
+                gridArray[dest].isDestinationForEntity ||
                 dest == positionOfCharacter)
             {
                 dest = Random.Range(0, rangeOfAction);

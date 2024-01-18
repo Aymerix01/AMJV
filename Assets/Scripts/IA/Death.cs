@@ -7,18 +7,25 @@ class Death : CharacterState
 {
     private bool waiting = false;
     private float time;
-    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GameObject[] g)
+
+    private Collider collider;
+    private Animator animator;
+    private CharacterStateController characterStateController;
+    public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GridStat[] g)
     {
         base.Enter(characterT, posCharacter, s, t, r, ra, g);
-        transform.gameObject.GetComponent<Animator>().SetBool("isDead", true);
+        animator = transform.GetComponent<Animator>();
+        collider = transform.GetComponent<Collider>();
+        characterStateController = transform.GetComponent<CharacterStateController>();
+        animator.SetBool("isDead", true);
         transform.gameObject.tag = "Untagged";
-        transform.gameObject.GetComponent<Collider>().enabled = false;
-        gridArray[posCharacter].gameObject.GetComponent<GridStat>().hasEntityOnIt = false;
-        if (characterT.gameObject.GetComponent<CharacterStateController>().possessFlag)
+        collider.enabled = false;
+        gridArray[posCharacter].hasEntityOnIt = false;
+        if (characterStateController.possessFlag)
         {
-            GameObject.Find("Game Manager").GetComponent<FlagSpawner>().SpawnFlag(characterT.gameObject);
-            characterT.gameObject.GetComponent<CharacterStateController>().possessFlag = false;
-            characterT.gameObject.GetComponent<CharacterStateController>().FlagImg.gameObject.SetActive(false);
+            GameObject.Find("Game Manager").GetComponent<FlagSpawner>().SpawnFlag(transform.gameObject);
+            characterStateController.possessFlag = false;
+            characterStateController.FlagImg.gameObject.SetActive(false);
         }
         return this;
     }
