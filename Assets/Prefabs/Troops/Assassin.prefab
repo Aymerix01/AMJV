@@ -3460,10 +3460,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionOfCharacter: 12
-  health: 100
-  speed: 2
-  attackDmg: 50
-  armor: 1
+  health: 50
+  speed: 2.5
+  attackDmg: 20
+  armor: 0.5
   timeWaiting: 0
   rangeToSeeOpponent: 3
   rangeToAttackOpponent: 1.5
@@ -3502,7 +3502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeSpeAttack: 20
   timeEndBoost: 5
-  boost: 100
+  boost: 30
 --- !u!1 &4208831818851192215
 GameObject:
   m_ObjectHideFlags: 0

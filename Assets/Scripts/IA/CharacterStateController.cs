@@ -92,7 +92,7 @@ public class CharacterStateController : MonoBehaviour
                     p.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
                     p.GetComponent<Projectile>().target = opponentToAttack.transform;
                     p.GetComponent<Projectile>().attackDmg = attackDmg;
-                    opponentToAttack.GetComponent<Projectile>().armor = opponentToAttack.GetComponent<CharacterStateController>().armor;
+                    p.GetComponent<Projectile>().armor = opponentToAttack.GetComponent<CharacterStateController>().armor;
                 }
             }
         }
