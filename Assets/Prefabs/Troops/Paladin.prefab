@@ -831,7 +831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionOfCharacter: 1
   health: 100
-  speed: 2
+  speed: 1
   attackDmg: 10
   armor: 3
   timeWaiting: 1
