@@ -54,7 +54,7 @@ public abstract class CharacterState
     {
         foreach (GameObject player in players)
         {
-            if (Vector3.Distance(player.transform.position, transform.position) < rangeToSeePlayer)
+            if (player != null && Vector3.Distance(player.transform.position, transform.position) < rangeToSeePlayer)
             {
                 return true;
             }
@@ -74,17 +74,22 @@ public abstract class CharacterState
     }
     public CharacterStateController GetPlayerTransform()
     {
+        //players = GameObject.FindGameObjectsWithTag("Player");
         float closestPlayer = rangeToSeePlayer;
         GameObject target = null;
         foreach (GameObject player in players)
         {
-            if (Vector3.Distance(player.transform.position, transform.position) < closestPlayer)
+            if (player != null && Vector3.Distance(player.transform.position, transform.position) < closestPlayer)
             {
                 closestPlayer = Vector3.Distance(player.transform.position, transform.position);
                 target = player;
             }
         }
-        return target.GetComponent<CharacterStateController>();
+        if (target != null)
+        {
+            return target.GetComponent<CharacterStateController>();
+        }
+        return null;
     }
     /*public GameObject[] GetEnemiesGameObject()
     {

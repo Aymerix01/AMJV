@@ -56,8 +56,11 @@ public class UnitSelections : MonoBehaviour
     {
         foreach(GameObject unit in unitsSelected) 
         {
-            unit.transform.GetChild(0).gameObject.SetActive(false);
-            unit.GetComponent<CharacterStateController>().selected = false;
+            if (unit != null)
+            {
+                unit.transform.GetChild(0).gameObject.SetActive(false);
+                unit.GetComponent<CharacterStateController>().selected = false;
+            }
         }
         unitsSelected.Clear();
     }
