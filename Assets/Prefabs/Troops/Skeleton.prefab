@@ -822,7 +822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionOfCharacter: 32
-  health: 10
+  health: 50
   speed: 1
   attackDmg: 10
   armor: 1
@@ -837,6 +837,7 @@ MonoBehaviour:
   FlagImg: {fileID: 4036368885097321471}
   possessFlag: 0
   opponentToAttack: {fileID: 0}
+  rangeOfAction: 0
 --- !u!136 &4289188008300826475
 CapsuleCollider:
   m_ObjectHideFlags: 0

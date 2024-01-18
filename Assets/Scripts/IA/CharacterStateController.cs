@@ -61,20 +61,20 @@ public class CharacterStateController : MonoBehaviour
         if (opponentToAttack == null)
         {
             GameObject playerTarget = currentState.GetPlayerTransform();
-            if (rangeToAttackOpponent <= 1.5)
+            if (rangeToAttackOpponent <= 1.5 && playerTarget != null)
             {
-                playerTarget.GetComponent<CharacterStateController>().pv -= attackDmg / armor;
+                playerTarget.GetComponent<CharacterStateController>().pv -= attackDmg / opponentToAttack.GetComponent<CharacterStateController>().armor;
                 Debug.Log(playerTarget.GetComponent<CharacterStateController>().pv);
             }
             else
             {
-                if (projectile != null)
+                if (projectile != null && playerTarget != null)
                 {
                     GameObject p = Instantiate(projectile);
                     p.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
                     p.GetComponent<Projectile>().target = playerTarget.transform;
                     p.GetComponent<Projectile>().attackDmg = attackDmg;
-                    p.GetComponent<Projectile>().armor = armor;
+                    p.GetComponent<Projectile>().armor = playerTarget.GetComponent<CharacterStateController>().armor;
                 }
             }
         }
@@ -82,7 +82,7 @@ public class CharacterStateController : MonoBehaviour
         {
             if (rangeToAttackOpponent <= 1.5)
             {
-                opponentToAttack.GetComponent<CharacterStateController>().pv -= attackDmg / armor;
+                opponentToAttack.GetComponent<CharacterStateController>().pv -= attackDmg / opponentToAttack.GetComponent<CharacterStateController>().armor;
             }
             else
             {
@@ -92,7 +92,7 @@ public class CharacterStateController : MonoBehaviour
                     p.transform.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
                     p.GetComponent<Projectile>().target = opponentToAttack.transform;
                     p.GetComponent<Projectile>().attackDmg = attackDmg;
-                    p.GetComponent<Projectile>().armor = armor;
+                    opponentToAttack.GetComponent<Projectile>().armor = opponentToAttack.GetComponent<CharacterStateController>().armor;
                 }
             }
         }

@@ -808,6 +808,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6977470a3b09790458452e0869d8da2a, type: 3}
       insertIndex: -1
       addedObject: {fileID: -6876288055356259201}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6977470a3b09790458452e0869d8da2a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8720050802069776129}
   m_SourcePrefab: {fileID: 100100000, guid: 6977470a3b09790458452e0869d8da2a, type: 3}
 --- !u!1 &5893806968510400591 stripped
 GameObject:
@@ -829,8 +832,8 @@ MonoBehaviour:
   positionOfCharacter: 1
   health: 100
   speed: 2
-  attackDmg: 0
-  armor: 1
+  attackDmg: 10
+  armor: 3
   timeWaiting: 1
   rangeToSeeOpponent: 3
   rangeToAttackOpponent: 1.5
@@ -878,6 +881,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.75, z: 0}
+--- !u!114 &-8720050802069776129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5893806968510400591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542d6d24d590e1442a65acd42c3f0227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeEndBoost: 20
+  timeSpeAttack: 1
+  radiusSpeAttack: 1
+  boostArmor: 2
 --- !u!4 &6521443821823759093 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6977470a3b09790458452e0869d8da2a, type: 3}
