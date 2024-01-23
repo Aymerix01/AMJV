@@ -22,6 +22,7 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         isAttackMode = true;
         menuPrincipal.SetActive(true);
         menuOptions.SetActive(false);
