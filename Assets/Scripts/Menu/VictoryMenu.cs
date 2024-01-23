@@ -6,7 +6,6 @@ public class VictoryMenu : MonoBehaviour
     public void NextLevel()
     {
         Time.timeScale = 1f;
-        Debug.Log("test");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

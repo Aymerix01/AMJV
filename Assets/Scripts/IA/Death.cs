@@ -18,15 +18,23 @@ class Death : CharacterState
         collider = transform.GetComponent<Collider>();
         characterStateController = transform.GetComponent<CharacterStateController>();
         animator.SetBool("isDead", true);
-        transform.gameObject.tag = "Untagged";
         collider.enabled = false;
         gridArray[posCharacter].hasEntityOnIt = false;
+
         if (characterStateController.possessFlag)
         {
+            Debug.Log("a");
+            if (transform.gameObject.CompareTag("Player"))
+            {
+                Debug.Log("b");
+                characterStateController.Lose();
+            }
+
             GameObject.Find("Game Manager").GetComponent<FlagSpawner>().SpawnFlag(transform.gameObject);
             characterStateController.possessFlag = false;
             characterStateController.FlagImg.gameObject.SetActive(false);
         }
+        transform.gameObject.tag = "Untagged";
         return this;
     }
 

@@ -29,8 +29,13 @@ public class CharacterStateController : MonoBehaviour
 
     public int rangeOfAction;
 
+    [SerializeField] private Canvas loseScreen;
+
+    
+
     private void Start()
     {
+        
         pv = health;
         selected = false;
         gridArray = GridHex.GetGrid(transform);
@@ -93,5 +98,11 @@ public class CharacterStateController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Lose()
+    {
+        loseScreen.GetComponent<Transform>().GetChild(1).gameObject.SetActive(true);
+        Time.timeScale = 0f;    
     }
 }

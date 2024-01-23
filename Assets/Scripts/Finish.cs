@@ -7,7 +7,7 @@ public class Finish : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && other.gameObject.GetComponent<CharacterStateController>().possessFlag)
         {
-            victoryCanvas.SetActive(true);
+            victoryCanvas.GetComponent<Transform>().GetChild(0).gameObject.SetActive(true);
             Time.timeScale = 0f;
         }
     }

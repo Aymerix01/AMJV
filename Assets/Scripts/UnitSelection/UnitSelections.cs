@@ -5,6 +5,7 @@ public class UnitSelections : MonoBehaviour
 {
     public List<GameObject> unitList = new List<GameObject>();
     public List<GameObject> unitsSelected = new List<GameObject>();
+    [SerializeField] private Canvas loseScreen;
 
 
     private static UnitSelections _instance;
@@ -21,7 +22,14 @@ public class UnitSelections : MonoBehaviour
             _instance = this;
         }
     }
-
+    private void Update()
+    {
+        if (unitList.Count <= 0) 
+        {
+            loseScreen.GetComponent<Transform>().GetChild(1).gameObject.SetActive(true);
+            Time.timeScale = 0f;
+        }
+    }
     public void ClickSelect(GameObject unitToAdd)
     {
         DeselectAll();
