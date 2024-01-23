@@ -18361,7 +18361,7 @@ PrefabInstance:
       objectReference: {fileID: 877703434}
     - target: {fileID: 4566058538554111501, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NextLevel
+      value: MainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 4735311238207326497, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
       propertyPath: m_Pivot.x
