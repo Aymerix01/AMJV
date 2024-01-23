@@ -7,6 +7,8 @@ class Follow : CharacterState
 
     private GridStat[] path;
 
+    private List<GameObject> unitsSelected;
+
     private int etapeMvmtIA;
     private int characterPosInit;
 
@@ -39,6 +41,7 @@ class Follow : CharacterState
     public override CharacterState Enter(Transform characterT, int posCharacter, float s, float t, float r, float ra, GridStat[] g)
     {
         base.Enter(characterT, posCharacter, s, t, r, ra, g);
+        unitsSelected = GameObject.FindWithTag("Game Manager").GetComponentInChildren<UnitSelections>().unitsSelected;
         animator = transform.GetComponent<Animator>();
         characterStateController = transform.GetComponent<CharacterStateController>();
         camera = Camera.main;
@@ -48,6 +51,7 @@ class Follow : CharacterState
             if (characterTarget == null)
             {
                 Debug.Log("PlayerTarget is Null");
+                animator.SetBool("isWalking", false);
                 return Exit(new Idle());
             }
             characterPosInit = characterTarget.positionOfCharacter;
@@ -56,6 +60,7 @@ class Follow : CharacterState
             if (destination == -1)
             {
                 Debug.Log("No Destination, escape");
+                animator.SetBool("isWalking", false);
                 return Exit(new Escape());
             }
             path = FindPath.GetPathIA(transform, positionOfCharacter, destination, gridArray);
@@ -77,6 +82,7 @@ class Follow : CharacterState
             if (characterTarget == null)
             {
                 Debug.Log("PlayerTarget is Null");
+                animator.SetBool("isWalking", false);
                 return Exit(new Idle());
             }
             if (characterTarget.tag == "Enemy")
@@ -87,6 +93,7 @@ class Follow : CharacterState
                 if (destination == -1)
                 {
                     Debug.Log("No Destination, Selected");
+                    animator.SetBool("isWalking", false);
                     return Exit(new Selected());
                 }
                 path = FindPath.GetPathIA(transform, positionOfCharacter, destination, gridArray);
@@ -106,6 +113,23 @@ class Follow : CharacterState
             path[etapeMvmtIA].hasEntityOnIt = false;
             path[etapeMvmtIA].nbrEntityOnIt -= 1;
             return Exit(new Death());
+        }
+        if (Input.GetMouseButtonDown(1) && unitsSelected.Contains(transform.gameObject))
+        {
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                int layer = hit.collider.gameObject.layer;
+                if (layer == 6 && !hit.collider.CompareTag("Hole") && !hit.collider.gameObject.GetComponent<GridStat>().hasEntityOnIt)
+                {
+                    return Exit(new Walk());
+                }
+                if (hit.collider.gameObject.tag == "Enemy")
+                {
+                    return Exit(new Follow());
+                }
+            }
         }
         if (IsIAarrivedEtape(0, path))
         {

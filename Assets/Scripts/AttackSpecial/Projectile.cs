@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other != null && target.CompareTag(other.gameObject.tag) && other.gameObject.TryGetComponent<CharacterStateController>(out _))
+        if (other != null && target != null && target.CompareTag(other.gameObject.tag) && other.gameObject.TryGetComponent<CharacterStateController>(out _))
         {
             other.gameObject.GetComponent<CharacterStateController>().pv -= attackDmg / armor;
             Destroy(transform.gameObject);
