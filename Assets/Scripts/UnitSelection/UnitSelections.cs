@@ -6,6 +6,7 @@ public class UnitSelections : MonoBehaviour
     public List<GameObject> unitList = new List<GameObject>();
     public List<GameObject> unitsSelected = new List<GameObject>();
     [SerializeField] private Canvas loseScreen;
+    [SerializeField] private Canvas BoxGrid;
 
 
     private static UnitSelections _instance;
@@ -27,6 +28,8 @@ public class UnitSelections : MonoBehaviour
         if (unitList.Count <= 0) 
         {
             loseScreen.GetComponent<Transform>().GetChild(1).gameObject.SetActive(true);
+            BoxGrid.gameObject.SetActive(false);
+            loseScreen.GetComponent<UIManager>().victoire = true;
             Time.timeScale = 0f;
         }
     }

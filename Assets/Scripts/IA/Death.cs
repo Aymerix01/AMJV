@@ -23,10 +23,8 @@ class Death : CharacterState
 
         if (characterStateController.possessFlag)
         {
-            Debug.Log("a");
             if (transform.gameObject.CompareTag("Player"))
             {
-                Debug.Log("b");
                 characterStateController.Lose();
             }
 

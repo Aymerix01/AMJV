@@ -3,23 +3,30 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
     [SerializeField] private GameObject menuPrincipal;
     [SerializeField] private GameObject menuOptions;
 
+    [SerializeField] private Sprite attackMode;
+    [SerializeField] private Sprite defenseMode;
+
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private TMP_Dropdown resolutionDropdown;
+    [SerializeField] private GameObject[] buttonsGameMode = new GameObject[2];
 
+    private bool isAttackMode;
     private Resolution[] resolutions;
 
     private void Start()
     {
+        isAttackMode = true;
         menuPrincipal.SetActive(true);
         menuOptions.SetActive(false);
 
-        QualitySettings.SetQualityLevel(0);
+        QualitySettings.SetQualityLevel(2);
 
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
@@ -43,7 +50,13 @@ public class Menu : MonoBehaviour
     }
     public void Play()
     {
-        SceneManager.LoadScene(1);
+        if (isAttackMode) 
+        { 
+            SceneManager.LoadScene(1);
+        } else
+        {
+            SceneManager.LoadScene(5);
+        }
     }
 
     public void Options()
@@ -85,5 +98,23 @@ public class Menu : MonoBehaviour
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    public void SwitchGameMode()
+    {
+        isAttackMode = !isAttackMode;
+        if (isAttackMode)
+        {
+            foreach(GameObject go in buttonsGameMode)
+            {
+                go.GetComponent<Image>().sprite = attackMode;
+            }
+        } else
+        {
+            foreach (GameObject go in buttonsGameMode)
+            {
+                go.GetComponent<Image>().sprite = defenseMode;
+            }
+        }
     }
 }

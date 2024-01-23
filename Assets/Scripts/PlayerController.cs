@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     {
         positionInGrid = null;
         destinationInGrid = null;
+        Time.timeScale = 1f;
     }
     void Update()
     {

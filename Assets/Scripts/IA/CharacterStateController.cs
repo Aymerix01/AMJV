@@ -102,7 +102,10 @@ public class CharacterStateController : MonoBehaviour
 
     public void Lose()
     {
-        loseScreen.GetComponent<Transform>().GetChild(1).gameObject.SetActive(true);
-        Time.timeScale = 0f;    
+        if (loseScreen != null)
+        {
+            loseScreen.GetComponent<Transform>().GetChild(1).gameObject.SetActive(true);
+            Time.timeScale = 0f;
+        } 
     }
 }
