@@ -1188,6 +1188,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 435130860}
     m_Modifications:
     - target: {fileID: 1836009246148935362, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1883735271}
+    - target: {fileID: 1836009246148935362, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
       propertyPath: positionOfCharacter
       value: 98
       objectReference: {fileID: 0}
@@ -2560,6 +2564,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 435130860}
     m_Modifications:
     - target: {fileID: 5122250236991887343, guid: 20ef5ebc2ab2d414e889282bed237dfe, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1883735271}
+    - target: {fileID: 5122250236991887343, guid: 20ef5ebc2ab2d414e889282bed237dfe, type: 3}
       propertyPath: positionOfCharacter
       value: 79
       objectReference: {fileID: 0}
@@ -2916,6 +2924,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 435130860}
     m_Modifications:
+    - target: {fileID: 5122250236991887343, guid: 20ef5ebc2ab2d414e889282bed237dfe, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1883735271}
     - target: {fileID: 5122250236991887343, guid: 20ef5ebc2ab2d414e889282bed237dfe, type: 3}
       propertyPath: positionOfCharacter
       value: 80
@@ -3455,7 +3467,6 @@ Transform:
   - {fileID: 1411291750}
   - {fileID: 508575128}
   - {fileID: 1655099026}
-  - {fileID: 1769636367}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &439045607
@@ -3998,6 +4009,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MalePaysan (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1883735271}
     - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
       propertyPath: positionOfCharacter
       value: 92
@@ -6366,19 +6381,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 435130860}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1119372455609384946, guid: 8c6f917b5c116384e957fa6f2b0e609d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.0905567
+      value: 2.588
       objectReference: {fileID: 0}
     - target: {fileID: 1119372455609384946, guid: 8c6f917b5c116384e957fa6f2b0e609d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.472685
+      value: 0.48206568
       objectReference: {fileID: 0}
     - target: {fileID: 1119372455609384946, guid: 8c6f917b5c116384e957fa6f2b0e609d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3900361
+      value: -5.973
       objectReference: {fileID: 0}
     - target: {fileID: 1119372455609384946, guid: 8c6f917b5c116384e957fa6f2b0e609d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8989,6 +9004,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MalePaysan (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1883735271}
     - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
       propertyPath: positionOfCharacter
       value: 91
@@ -13680,6 +13699,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 435130860}
     m_Modifications:
     - target: {fileID: 1836009246148935362, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1883735271}
+    - target: {fileID: 1836009246148935362, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
       propertyPath: positionOfCharacter
       value: 100
       objectReference: {fileID: 0}
@@ -14851,6 +14874,10 @@ PrefabInstance:
       value: MalePaysan
       objectReference: {fileID: 0}
     - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1883735271}
+    - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
       propertyPath: positionOfCharacter
       value: 90
       objectReference: {fileID: 0}
@@ -15422,11 +15449,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4629190223424002819, guid: fc63bf80beaa265479bc9e27a87914b3, type: 3}
   m_PrefabInstance: {fileID: 1762917619}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1769636367 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1119372455609384946, guid: 8c6f917b5c116384e957fa6f2b0e609d, type: 3}
-  m_PrefabInstance: {fileID: 737227370}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1779190430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15435,6 +15457,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2319449296449497457, guid: 91d8bac801e9403438fef88ba2ba9240, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1883735271}
     - target: {fileID: 3655585540391701500, guid: 91d8bac801e9403438fef88ba2ba9240, type: 3}
       propertyPath: grid
       value: 
@@ -16538,6 +16564,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
+--- !u!223 &1883735271 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 1150451347452597903, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
+  m_PrefabInstance: {fileID: 1883735270}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1886013366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17914,6 +17945,10 @@ PrefabInstance:
       value: Mage
       objectReference: {fileID: 0}
     - target: {fileID: 5076602616679915795, guid: 2fac499fd2b84494daa0b0ccf36c28f7, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1883735271}
+    - target: {fileID: 5076602616679915795, guid: 2fac499fd2b84494daa0b0ccf36c28f7, type: 3}
       propertyPath: positionOfCharacter
       value: 99
       objectReference: {fileID: 0}
@@ -18824,6 +18859,7 @@ SceneRoots:
   - {fileID: 1779190430}
   - {fileID: 15496424}
   - {fileID: 2008034411}
+  - {fileID: 737227370}
   - {fileID: 435130860}
   - {fileID: 1556303937}
   - {fileID: 1883735270}

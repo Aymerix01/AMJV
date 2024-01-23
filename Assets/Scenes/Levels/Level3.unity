@@ -1600,6 +1600,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2061836155}
     m_Modifications:
     - target: {fileID: 5122250236991887343, guid: 20ef5ebc2ab2d414e889282bed237dfe, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
+    - target: {fileID: 5122250236991887343, guid: 20ef5ebc2ab2d414e889282bed237dfe, type: 3}
       propertyPath: positionOfCharacter
       value: 242
       objectReference: {fileID: 0}
@@ -1817,6 +1821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MalePaysan (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
     - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
       propertyPath: positionOfCharacter
       value: 247
@@ -2546,6 +2554,10 @@ PrefabInstance:
       value: MalePaysan (3)
       objectReference: {fileID: 0}
     - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
+    - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
       propertyPath: positionOfCharacter
       value: 248
       objectReference: {fileID: 0}
@@ -3047,6 +3059,10 @@ PrefabInstance:
       value: MalePaysan (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
+    - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
       propertyPath: positionOfCharacter
       value: 239
       objectReference: {fileID: 0}
@@ -3300,6 +3316,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage
       objectReference: {fileID: 0}
+    - target: {fileID: 5076602616679915795, guid: 2fac499fd2b84494daa0b0ccf36c28f7, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
     - target: {fileID: 5076602616679915795, guid: 2fac499fd2b84494daa0b0ccf36c28f7, type: 3}
       propertyPath: positionOfCharacter
       value: 235
@@ -4112,6 +4132,10 @@ PrefabInstance:
       value: Assassin (5)
       objectReference: {fileID: 0}
     - target: {fileID: 9061879212019768785, guid: 63c15647f8b2bbd4984e9ed9762053e6, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
+    - target: {fileID: 9061879212019768785, guid: 63c15647f8b2bbd4984e9ed9762053e6, type: 3}
       propertyPath: positionOfCharacter
       value: 266
       objectReference: {fileID: 0}
@@ -4623,6 +4647,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MalePaysan (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
     - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
       propertyPath: positionOfCharacter
       value: 245
@@ -6907,6 +6935,10 @@ PrefabInstance:
       value: MalePaysan (5)
       objectReference: {fileID: 0}
     - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
+    - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
       propertyPath: positionOfCharacter
       value: 244
       objectReference: {fileID: 0}
@@ -8537,6 +8569,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2061836155}
     m_Modifications:
+    - target: {fileID: 1836009246148935362, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
     - target: {fileID: 1836009246148935362, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
       propertyPath: positionOfCharacter
       value: 268
@@ -10685,6 +10721,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2061836155}
     m_Modifications:
     - target: {fileID: 5122250236991887343, guid: 20ef5ebc2ab2d414e889282bed237dfe, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
+    - target: {fileID: 5122250236991887343, guid: 20ef5ebc2ab2d414e889282bed237dfe, type: 3}
       propertyPath: positionOfCharacter
       value: 227
       objectReference: {fileID: 0}
@@ -12375,6 +12415,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2061836155}
     m_Modifications:
     - target: {fileID: 1836009246148935362, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
+    - target: {fileID: 1836009246148935362, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
       propertyPath: positionOfCharacter
       value: 253
       objectReference: {fileID: 0}
@@ -13421,6 +13465,10 @@ PrefabInstance:
       value: Assassin (3)
       objectReference: {fileID: 0}
     - target: {fileID: 9061879212019768785, guid: 63c15647f8b2bbd4984e9ed9762053e6, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
+    - target: {fileID: 9061879212019768785, guid: 63c15647f8b2bbd4984e9ed9762053e6, type: 3}
       propertyPath: positionOfCharacter
       value: 249
       objectReference: {fileID: 0}
@@ -14304,6 +14352,11 @@ PrefabInstance:
 --- !u!1 &1304791899 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8471441000630171296, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
+  m_PrefabInstance: {fileID: 1304791898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &1304791900 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 1150451347452597903, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
   m_PrefabInstance: {fileID: 1304791898}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1312830980
@@ -17158,6 +17211,10 @@ PrefabInstance:
       value: Assassin (4)
       objectReference: {fileID: 0}
     - target: {fileID: 9061879212019768785, guid: 63c15647f8b2bbd4984e9ed9762053e6, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
+    - target: {fileID: 9061879212019768785, guid: 63c15647f8b2bbd4984e9ed9762053e6, type: 3}
       propertyPath: positionOfCharacter
       value: 267
       objectReference: {fileID: 0}
@@ -18155,6 +18212,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MalePaysan
       objectReference: {fileID: 0}
+    - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
     - target: {fileID: 1508560734103414573, guid: 312d7aa7d6b8a19499479e61c6cb5ec2, type: 3}
       propertyPath: positionOfCharacter
       value: 234
@@ -19525,6 +19586,10 @@ PrefabInstance:
       value: Mage (2)
       objectReference: {fileID: 0}
     - target: {fileID: 5076602616679915795, guid: 2fac499fd2b84494daa0b0ccf36c28f7, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
+    - target: {fileID: 5076602616679915795, guid: 2fac499fd2b84494daa0b0ccf36c28f7, type: 3}
       propertyPath: positionOfCharacter
       value: 269
       objectReference: {fileID: 0}
@@ -19739,6 +19804,10 @@ PrefabInstance:
       value: Assassin (2)
       objectReference: {fileID: 0}
     - target: {fileID: 9061879212019768785, guid: 63c15647f8b2bbd4984e9ed9762053e6, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
+    - target: {fileID: 9061879212019768785, guid: 63c15647f8b2bbd4984e9ed9762053e6, type: 3}
       propertyPath: positionOfCharacter
       value: 246
       objectReference: {fileID: 0}
@@ -19804,6 +19873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Assassin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9061879212019768785, guid: 63c15647f8b2bbd4984e9ed9762053e6, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
     - target: {fileID: 9061879212019768785, guid: 63c15647f8b2bbd4984e9ed9762053e6, type: 3}
       propertyPath: positionOfCharacter
       value: 240
@@ -20183,6 +20256,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2319449296449497457, guid: 91d8bac801e9403438fef88ba2ba9240, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
     - target: {fileID: 3655585540391701500, guid: 91d8bac801e9403438fef88ba2ba9240, type: 3}
       propertyPath: grid
       value: 
@@ -21036,6 +21113,10 @@ PrefabInstance:
       value: Mage (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5076602616679915795, guid: 2fac499fd2b84494daa0b0ccf36c28f7, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
+    - target: {fileID: 5076602616679915795, guid: 2fac499fd2b84494daa0b0ccf36c28f7, type: 3}
       propertyPath: positionOfCharacter
       value: 251
       objectReference: {fileID: 0}
@@ -21447,6 +21528,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2061836155}
     m_Modifications:
+    - target: {fileID: 1836009246148935362, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
     - target: {fileID: 1836009246148935362, guid: f6c36753f5603224d8286dde8947df0d, type: 3}
       propertyPath: positionOfCharacter
       value: 263
@@ -22943,6 +23028,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2061836155}
     m_Modifications:
     - target: {fileID: 5122250236991887343, guid: 20ef5ebc2ab2d414e889282bed237dfe, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
+    - target: {fileID: 5122250236991887343, guid: 20ef5ebc2ab2d414e889282bed237dfe, type: 3}
       propertyPath: positionOfCharacter
       value: 240
       objectReference: {fileID: 0}
@@ -23274,6 +23363,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Assassin
       objectReference: {fileID: 0}
+    - target: {fileID: 9061879212019768785, guid: 63c15647f8b2bbd4984e9ed9762053e6, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1304791900}
     - target: {fileID: 9061879212019768785, guid: 63c15647f8b2bbd4984e9ed9762053e6, type: 3}
       propertyPath: positionOfCharacter
       value: 262
