@@ -10,10 +10,11 @@ class Walk : CharacterState
 
     private Animator animator;
     private CharacterStateController characterStateController;
+    private Camera camera;
 
     private int ChooseDestinationClickSingle()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
@@ -36,7 +37,7 @@ class Walk : CharacterState
 
     private int ChooseDestinationClickMultiple()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
@@ -80,6 +81,7 @@ class Walk : CharacterState
         base.Enter(characterT, posCharacter, s, t, r, ra, g);
         unitsSelected = GameObject.FindWithTag("Game Manager").GetComponentInChildren<UnitSelections>().unitsSelected;
         animator = transform.GetComponent<Animator>();
+        camera = Camera.main;
         characterStateController = transform.GetComponent<CharacterStateController>();
         int end;
         if(transform.gameObject.layer == 7 && unitsSelected.Count == 1)
@@ -118,9 +120,26 @@ class Walk : CharacterState
         }
         if (Input.GetMouseButtonDown(1) && unitsSelected.Contains(transform.gameObject))
         {
-            path[0].isDestinationForEntity = false;
-            path[etapeMvmtIA].hasEntityOnIt = false;
-            path[etapeMvmtIA].nbrEntityOnIt -= 1;
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                int layer = hit.collider.gameObject.layer;
+                if (layer == 6 && !hit.collider.CompareTag("Hole") && !hit.collider.gameObject.GetComponent<GridStat>().hasEntityOnIt)
+                {
+                    path[0].isDestinationForEntity = false;
+                    path[etapeMvmtIA].hasEntityOnIt = false;
+                    path[etapeMvmtIA].nbrEntityOnIt -= 1;
+                    return Exit(new Walk());
+                }
+                if (hit.collider.gameObject.tag == "Enemy")
+                {
+                    path[0].isDestinationForEntity = false;
+                    path[etapeMvmtIA].hasEntityOnIt = false;
+                    path[etapeMvmtIA].nbrEntityOnIt -= 1;
+                    return Exit(new Follow());
+                }
+            }
             return Exit(new Walk());
         }
         if (IsIAarrivedEtape(0, path))

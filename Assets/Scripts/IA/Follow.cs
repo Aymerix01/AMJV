@@ -73,6 +73,7 @@ class Follow : CharacterState
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
+                Debug.Log(hit.collider.gameObject.name);
                 if (hit.collider.gameObject.CompareTag("Enemy"))
                 {
                     characterStateController.opponentToAttack = hit.collider.gameObject.GetComponent<CharacterStateController>();
@@ -123,10 +124,16 @@ class Follow : CharacterState
                 int layer = hit.collider.gameObject.layer;
                 if (layer == 6 && !hit.collider.CompareTag("Hole") && !hit.collider.gameObject.GetComponent<GridStat>().hasEntityOnIt)
                 {
+                    path[0].isDestinationForEntity = false;
+                    path[etapeMvmtIA].hasEntityOnIt = false;
+                    path[etapeMvmtIA].nbrEntityOnIt -= 1;
                     return Exit(new Walk());
                 }
                 if (hit.collider.gameObject.tag == "Enemy")
                 {
+                    path[0].isDestinationForEntity = false;
+                    path[etapeMvmtIA].hasEntityOnIt = false;
+                    path[etapeMvmtIA].nbrEntityOnIt -= 1;
                     return Exit(new Follow());
                 }
             }
