@@ -19,6 +19,8 @@ public class Menu : MonoBehaviour
         menuPrincipal.SetActive(true);
         menuOptions.SetActive(false);
 
+        QualitySettings.SetQualityLevel(0);
+
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
