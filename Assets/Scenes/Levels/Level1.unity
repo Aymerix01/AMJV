@@ -11664,6 +11664,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aadea4e431a102469caedbd14841bef, type: 3}
+--- !u!223 &1662505714 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 2025883121673574235, guid: 0aadea4e431a102469caedbd14841bef, type: 3}
+  m_PrefabInstance: {fileID: 1662505713}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1690909397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12950,6 +12955,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2319449296449497457, guid: 91d8bac801e9403438fef88ba2ba9240, type: 3}
+      propertyPath: BoxGrid
+      value: 
+      objectReference: {fileID: 1662505714}
+    - target: {fileID: 2319449296449497457, guid: 91d8bac801e9403438fef88ba2ba9240, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 336076536}
     - target: {fileID: 2319449296449497457, guid: 91d8bac801e9403438fef88ba2ba9240, type: 3}
       propertyPath: looseScreen
       value: 
