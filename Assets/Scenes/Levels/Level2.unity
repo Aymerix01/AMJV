@@ -16660,6 +16660,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6618306688046397692, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671418355172744916, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 86
+      objectReference: {fileID: 0}
     - target: {fileID: 7251222105239602027, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -16671,6 +16679,14 @@ PrefabInstance:
     - target: {fileID: 7251222105239602027, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560189058330137067, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668954621288268413, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 165
       objectReference: {fileID: 0}
     - target: {fileID: 8276652382396472207, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
