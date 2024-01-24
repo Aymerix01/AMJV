@@ -17692,6 +17692,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Restart
       objectReference: {fileID: 0}
+    - target: {fileID: 1680654731502498735, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
+      propertyPath: m_text
+      value: You've protected the flag !
+      objectReference: {fileID: 0}
     - target: {fileID: 2869799428702300913, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

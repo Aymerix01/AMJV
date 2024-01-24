@@ -2443,6 +2443,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1680654731502498735, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
+      propertyPath: m_text
+      value: You've protected the flag !
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680654731502498735, guid: 285f4c951877fce449f1a19721c58b25, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
