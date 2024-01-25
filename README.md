@@ -28,12 +28,10 @@ Voici les controles pour jouer au jeu:
     Tout le temps :
         Clique gauche pour selectionner une unité
         Maintenir clique gauche pour selectionner plusieurs unités
-
     Lorsqu'une/plusieurs unités sont sélectionnées :
         Clique droit pour envoyer une unité (en cliquant sur le terrain)
         Clique droit pour attaquer une unité (en cliquant sur un ennemi)
         La touche R pour activer les attaques spéciales
-
     Code de triche:
         Touche espace pour tuer toutes les unités dans le state Attack (unité joueur et ennemi)
 
